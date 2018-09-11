@@ -6,18 +6,22 @@
 #ifndef USERINFO_H
 #define USERINFO_H
 
-#ifdef __SERVER__
-#include "../server/ormlite.h"
-#endif
+#include "ormlite.h"
+
+using namespace BOT_ORM;
 
 class UserInfo
 {
-    int id;
+public:
+//    int id;
     std::string username;
     std::string password;
 
     int balance;
     int privilege;
+
+    ORMAP("UserInfo", username, password, balance, privilege);
+
 };
 
 #endif // USERINFO_H

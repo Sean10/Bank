@@ -7,6 +7,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "client.h"
 
 namespace Ui {
 class Widget;
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::Widget *ui;
 
+    Sean_Socket::Client *client_;
     void InitConnect();
 
 };

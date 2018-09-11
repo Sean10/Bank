@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>银行业务中心</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>89</x>
-     <y>20</y>
+     <x>10</x>
+     <y>80</y>
      <width>256</width>
      <height>168</height>
     </rect>
