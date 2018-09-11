@@ -15,17 +15,23 @@ SOURCES += main.cpp \
             widget.cpp \
             client.cpp \
     stackwidget.cpp \
-    userlobby.cpp
+    userlobby.cpp \
+    dialogorder.cpp \
+    detailwidget.cpp
 
 HEADERS += \
             widget.h \
             client.h \
     ../socket.h \
     stackwidget.h \
-    userlobby.h
+    userlobby.h \
+    dialogorder.h \
+    detailwidget.h
 
 FORMS += \
         widget.ui \
     stackwidget.ui \
-    userlobby.ui
+    userlobby.ui \
+    dialogorder.ui \
+    detailwidget.ui
 

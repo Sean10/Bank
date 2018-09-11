@@ -38,6 +38,15 @@ public:
     json LoginHandle(json&);
     // 注册处理逻辑
     json SignupHandle(json&);
+    // 获取用户余额
+    json GetUsernameBalanceHandle(json&);
+    // 存款逻辑
+    json OrderDepositHandle(json&);
+    // 取款逻辑
+    json OrderWithdrawHandle(json&);
+    // 转账逻辑
+    json OrderTransferHandle(json&);
+
 
     // 与该Dispatch绑定用户登出
     void Logout();

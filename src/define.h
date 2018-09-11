@@ -10,9 +10,9 @@
 #define DATABASE_NAME "data.db"
 
 /*----------------------订单类型------------*/
-#define ORDER_DEPOSIT   0   // 存款订单
-#define ORDER_WITHDRAW  1   // 取款订单
-#define ORDER_TRANSFER  2   // 转账订单
+//#define ORDER_DEPOSIT   0   // 存款订单
+//#define ORDER_WITHDRAW  1   // 取款订单
+//#define ORDER_TRANSFER  2   // 转账订单
 
 #define PRIVILEGE_USER  0   // 普通用户
 #define PRIVILEGE_ADMIN 1   // 特权用户，管理员
@@ -20,6 +20,11 @@
 /*--------------请求类型--------*/
 #define LOG_IN  1       // 登陆请求
 #define SIGN_UP 2       // 注册请求
+
+#define GET_BALANCE 3   // 请求用户余额请求
+#define ORDER_DEPOSIT 4 // 存款充值请求
+#define ORDER_WITHDRAW 5 // 取款请求
+#define ORDER_TRANSFER 6 // 转账请求
 
 /*--------------------返回状态------------------------*/
 
