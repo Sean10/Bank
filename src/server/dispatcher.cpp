@@ -48,6 +48,12 @@ std::string Dispatcher::Dispatch(json requestInfo)
     case ORDER_TRANSFER:
         responseInfo = OrderTransferHandle(requestInfo);
         break;
+    case GET_ORDER_TABLE:
+        responseInfo = GetOrderTable(requestInfo);
+        break;
+    case GET_USER_TABLE:
+        responseInfo = GetUserTable(requestInfo);
+        break;
 
     default:
         responseInfo["define"] = SERVER_ERROR;
@@ -88,36 +94,13 @@ json Dispatcher::LoginHandle(json &requestInfo)
         username_ = requestInfo["username"].get<std::string>();
         // 检查是否已经在线
         if (parent_->Online(username_, connection_))
+        {
             responseInfo["define"] = state_ = LOG_IN_SUCCESS;
+            responseInfo["privilege"] = result.front().privilege;
+        }
         else
             responseInfo["define"] = LOG_IN_FAIL_AO;
     }
-
-
-
-
-//    if (result)
-//    {
-
-//        // 如果没有说明，说明用户名或密码错误
-//        if (result.is_null())
-//            responseInfo["define"] = LOG_IN_FAIL_WP;
-//        else
-//        {
-//            // 将username加入在线列表
-//            username_ = requestInfo["username"].get<std::string>();
-//            // 检查是否已经在线
-//            if (parent_->Online(username_, connection_))
-//                responseInfo["define"] = state_ = LOG_IN_SUCCESS;
-//            else
-//                responseInfo["define"] = LOG_IN_FAIL_AO;
-//        }
-//    }
-//    else
-//    {
-//        responseInfo["define"] = SERVER_ERROR;
-//        std::cout << "[ERROR] " << mapper.GetErrorMessage() << std::endl;
-//    }
 
     return std::move(responseInfo);
 }
@@ -155,47 +138,6 @@ json Dispatcher::SignupHandle(json &requestInfo)
         }
         responseInfo["define"] = SIGN_UP_SUCCESS;
     }
-
-//    ORMapper<UserInfo> mapper(DATABASE_NAME);
-//    UserInfo helper;
-//    QueryMessager<UserInfo> messager(helper);
-//    json responseInfo;
-
-//    std::cout << "[INFO] Signup request comes" << std::endl;
-
-//    // 查询数据库中是否有同用户名的条目
-//    auto result = mapper.Query(messager
-//                 .Where(Field(helper.username) == requestInfo["username"].get<std::string>()));
-
-//    if (result)
-//    {
-//        // 如果没有，说明可以注册
-//        if (messager.IsNone())
-//        {
-//            // 构建新的用户信息
-//            UserInfo userinfo = {
-//                requestInfo["username"].get<std::string>(),
-//                requestInfo["password"].get<std::string>(), 0, 0
-//            };
-
-//            auto result = mapper.Insert(userinfo);
-//            if (result)
-//            {
-//                responseInfo["define"] = SIGN_UP_SUCCESS;
-////                InitialBag();
-//            }
-//            else
-//                responseInfo["define"] = SIGN_UP_FAIL;
-//        }
-//        // 如果有，则注册失败
-//        else
-//            responseInfo["define"] = SIGN_UP_FAIL;
-//    }
-//    else
-//    {
-//        responseInfo["define"] = SERVER_ERROR;
-//        std::cout << "[ERROR] " << mapper.GetErrorMessage() << std::endl;
-//    }
 
     return std::move(responseInfo);
 }
@@ -318,7 +260,7 @@ json Dispatcher::OrderWithdrawHandle(json &requestInfo)
 json Dispatcher::OrderTransferHandle(json &requestInfo)
 {
     json responseInfo;
-    std::cout << "[INFO] Order Deposit request comes" << std::endl;
+    std::cout << "[INFO] Order Transfer request comes" << std::endl;
     ORMapper mapper(DATABASE_NAME);
     UserInfo userInfo;
     time_t record_time = time(NULL);
@@ -365,7 +307,76 @@ json Dispatcher::OrderTransferHandle(json &requestInfo)
     return std::move(responseInfo);
 }
 
+json Dispatcher::GetOrderTable(json& requestInfo)
+{
+    json responseInfo;
+    std::cout << "[INFO] Get Order Table request comes" << std::endl;
+    ORMapper mapper(DATABASE_NAME);
+    OrderInfo orderInfo;
+
+    auto result = mapper.Query(orderInfo).ToList();
+    if (result.empty())
+    {
+        responseInfo["define"] = SERVER_ERROR;
+        return responseInfo;
+    }
+
+    responseInfo["define"] = QUERY_SUCCESS;
+    for (auto &order: result)
+    {
+        responseInfo["content"].emplace_back(OrderInfoToJson(order));
+        std::cout << OrderInfoToJson(order).dump() << std::endl;
+    }
+    std::cout << "get order" << std::endl;
+    return std::move(responseInfo);
+}
+
+json Dispatcher::GetUserTable(json& requestInfo)
+{
+    json responseInfo;
+    std::cout << "[INFO] Get User Table request comes" << std::endl;
+    ORMapper mapper(DATABASE_NAME);
+    UserInfo userInfo;
+
+    auto result = mapper.Query(userInfo).ToList();
+    if (result.empty())
+    {
+        responseInfo["define"] = SERVER_ERROR;
+        return responseInfo;
+    }
+
+    responseInfo["define"] = QUERY_SUCCESS;
+    for (auto &user: result)
+    {
+        responseInfo["content"].emplace_back(UserInfoToJson(user));
+        std::cout << UserInfoToJson(user).dump() << std::endl;
+    }
+    std::cout << "get order" << std::endl;
+    return std::move(responseInfo);
+}
+
 void Dispatcher::Logout()
 {
     parent_->Offline(username_);
+}
+
+json Dispatcher::OrderInfoToJson(const OrderInfo& orderInfo)
+{
+    return json {
+        {"type", orderInfo.type},
+        {"amount", orderInfo.amount},
+        {"out_account", orderInfo.out_account},
+        {"in_account", orderInfo.in_account},
+        {"record_time", orderInfo.record_time}
+    };
+}
+
+json Dispatcher::UserInfoToJson(const UserInfo& userInfo)
+{
+    return json{
+        {"username", userInfo.username},
+        {"password", userInfo.password},
+        {"balance", userInfo.balance},
+        {"privilege", userInfo.privilege}
+    };
 }

@@ -80,7 +80,7 @@ void Widget::Login()
         else if (receiveInfo["define"].get<int>() == LOG_IN_SUCCESS)
         {
             // 进入主界面
-
+            client_->SetPrivilege(receiveInfo["privilege"].get<int>());
             try
             {
                 this->close();

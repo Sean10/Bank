@@ -17,7 +17,9 @@ SOURCES += main.cpp \
     stackwidget.cpp \
     userlobby.cpp \
     dialogorder.cpp \
-    detailwidget.cpp
+    detailwidget.cpp \
+    tablemodel.cpp \
+    userswidget.cpp
 
 HEADERS += \
             widget.h \
@@ -26,12 +28,15 @@ HEADERS += \
     stackwidget.h \
     userlobby.h \
     dialogorder.h \
-    detailwidget.h
+    detailwidget.h \
+    tablemodel.h \
+    userswidget.h
 
 FORMS += \
         widget.ui \
     stackwidget.ui \
     userlobby.ui \
     dialogorder.ui \
-    detailwidget.ui
+    detailwidget.ui \
+    userswidget.ui
 

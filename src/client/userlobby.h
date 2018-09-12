@@ -22,15 +22,24 @@ public:
     explicit UserLobby(Sean_Socket::Client *client_, QWidget *parent = 0);
     ~UserLobby();
 
+public slots:
+    void EmitOrderTable();
+    void EmitUserTable();
+
 private slots:
     void LogOut();
     void SetBalance();
     void DialogDeposit();
     void DialogWithdraw();
     void DialogTransfer();
+//    void WidgetOrderTable();
+
 
 signals:
     void setBalance();
+    void orderTable(int index);
+    void userTable(int index);
+    void closeAll();
 
 private:
     Ui::UserLobby *ui;

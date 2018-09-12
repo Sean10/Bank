@@ -26,6 +26,9 @@
 #define ORDER_WITHDRAW 5 // 取款请求
 #define ORDER_TRANSFER 6 // 转账请求
 
+#define GET_ORDER_TABLE 7 // 获取订单数据请求
+#define GET_USER_TABLE 8    // 获取用户列表请求
+
 /*--------------------返回状态------------------------*/
 
 #define LOG_IN_SUCCESS      65      // 登陆成功

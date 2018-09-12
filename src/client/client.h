@@ -48,6 +48,16 @@ public:
     //      用户名
     std::string GetUserName() { return username_; }
 
+    // 获取该client使用的用户的权限等级
+    // @return:
+    //      权限等级
+    int GetPrivilege();
+
+    // 设置该client绑定的用户权限等级
+    void SetPrivilege(int);
+
+
+
     ~Client();
 
 protected:
@@ -58,6 +68,8 @@ protected:
     sockaddr_in serverAddr_;
     // 用户名
     string username_;
+    // 权限等级
+    int privilege_;
 };
 
 }

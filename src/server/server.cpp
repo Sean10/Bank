@@ -152,7 +152,7 @@ void Server::InitSql()
     }
 
 
-    UserInfo userInfo2{"sean10", "123", 100, 0};
+    UserInfo userInfo2{"sean10", "123", 100, 1};
     try
     {
         mapper.Insert(userInfo2);

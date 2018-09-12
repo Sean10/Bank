@@ -10,6 +10,8 @@
 #include <QStackedLayout>
 #include "client.h"
 #include "userlobby.h"
+#include "detailwidget.h"
+#include "userswidget.h"
 
 namespace Ui
 {
@@ -24,6 +26,7 @@ public:
     explicit StackWidget(Sean_Socket::Client *client, QWidget *parent = 0);
     ~StackWidget();
 signals:
+    void signalsss(int sxx);
 
 public slots:
     // 设置当前显示的视图
@@ -33,6 +36,7 @@ public slots:
 
     // 返回到主界面
     void BackToLobby();
+
 
 private:
     // 初始化UI界面
@@ -52,6 +56,8 @@ private:
 
     // 各个分视图
     UserLobby *userLobby_;
+    DetailWidget *widgetOrderTable_;
+    UsersWidget *widgetUsersTable_;
 };
 
 #endif // STACKWIDGET_H

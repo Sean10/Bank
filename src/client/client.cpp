@@ -115,3 +115,14 @@ void Client::Close()
 {
     close(connectSocket_);
 }
+
+
+void Client::SetPrivilege(int privilege)
+{
+    this->privilege_ = privilege;
+}
+
+int Client::GetPrivilege()
+{
+    return this->privilege_;
+}

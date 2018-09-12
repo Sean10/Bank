@@ -46,7 +46,10 @@ public:
     json OrderWithdrawHandle(json&);
     // 转账逻辑
     json OrderTransferHandle(json&);
-
+    // 获取订单数据
+    json GetOrderTable(json&);
+    // 获取用户列表数据
+    json GetUserTable(json&);
 
     // 与该Dispatch绑定用户登出
     void Logout();
@@ -57,6 +60,12 @@ public:
 private:
     // 代表用户处于什么状态，如在线空闲或对战
     int state_;
+
+    // 将OrderInfo Object转为json格式
+    json OrderInfoToJson(const OrderInfo &orderInfo);
+
+    // 将UserInfo Object转为json格式
+    json UserInfoToJson(const UserInfo &userInfo);
 
     // 与dispatcher绑定的socket连接
     int connection_;

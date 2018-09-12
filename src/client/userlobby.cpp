@@ -30,12 +30,27 @@ void UserLobby::InitConnect()
     connect(ui->buttonDeposit, SIGNAL(clicked()), this, SLOT(DialogDeposit()));
     connect(ui->buttonWithdraw, SIGNAL(clicked()), this, SLOT(DialogWithdraw()));
     connect(ui->buttonTransfer, SIGNAL(clicked()), this, SLOT(DialogTransfer()));
+    connect(ui->buttonOrderTable, SIGNAL(clicked()), this, SLOT(EmitOrderTable()));
+    connect(ui->buttonUserTable, SIGNAL(clicked()), this, SLOT(EmitUserTable()));
+//    connect(ui->buttonOrderTable, SIGNAL(clicked()), this, SLOT(WidgetOrderTable()));
 }
 
 void UserLobby::InitUI()
 {
     ui->labelUsername->setText(QString::fromStdString((client_->GetUserName())));
+    if (1 == client_->GetPrivilege())
+    {
+        ui->label->setVisible(true);
+        ui->buttonOrderTable->setVisible(true);
+    }
+    else
+    {
+        ui->label->setVisible(false);
+        ui->buttonOrderTable->setVisible(false);
+    }
+
     emit setBalance();
+
 }
 
 UserLobby::~UserLobby()
@@ -43,6 +58,7 @@ UserLobby::~UserLobby()
     delete ui;
     delete client_;
 }
+
 
 void UserLobby::DialogDeposit()
 {
@@ -83,7 +99,7 @@ void UserLobby::LogOut()
 {
     // 释放所有资源
     this->close();
-//    emit closeAll();
+    emit closeAll();
 }
 
 
@@ -144,4 +160,15 @@ void UserLobby::SetBalance()
 
     ui->labelBalance->setText(QString::number(receiveInfo["balance"].get<int>(), 10));
 
+}
+
+
+void UserLobby::EmitOrderTable()
+{
+    emit orderTable(1);
+}
+
+void UserLobby::EmitUserTable()
+{
+    emit userTable(2);
 }
