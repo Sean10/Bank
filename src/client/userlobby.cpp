@@ -42,11 +42,15 @@ void UserLobby::InitUI()
     {
         ui->label->setVisible(true);
         ui->buttonOrderTable->setVisible(true);
+        ui->label_4->setVisible(true);
+        ui->buttonUserTable->setVisible(true);
     }
     else
     {
         ui->label->setVisible(false);
         ui->buttonOrderTable->setVisible(false);
+        ui->label_4->setVisible(false);
+        ui->buttonUserTable->setVisible(false);
     }
 
     emit setBalance();

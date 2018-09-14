@@ -83,7 +83,8 @@ json DetailWidget::GetOrderTable()
 {
     // 这里没有写权限校验
     json sendInfo = {
-        {"define", GET_ORDER_TABLE}
+        {"define", GET_ORDER_TABLE},
+        {"condition", ui->lineSearch->text().toStdString()}
     };
 
     json receiveInfo = json::parse(client_->Send(sendInfo.dump()));

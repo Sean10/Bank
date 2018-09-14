@@ -23,7 +23,7 @@ class DetailWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit DetailWidget(Sean_Socket::Client *client_,QWidget *parent = 0);
+    explicit DetailWidget(Sean_Socket::Client *client_, QWidget *parent = 0);
     ~DetailWidget();
 
     json GetOrderTable();

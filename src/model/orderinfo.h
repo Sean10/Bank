@@ -18,7 +18,7 @@ public:
     std::string out_account;
     std::string in_account;
 
-    time_t record_time;
+    long record_time;
 
     ORMAP("OrderInfo", type, amount, out_account, in_account, record_time);
 };

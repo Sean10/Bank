@@ -1386,7 +1386,7 @@ namespace BOT_ORM
             strFmt.pop_back ();
 
             _connector->Execute (
-                "create table " +
+                "create table if not exists " +
                 BOT_ORM_Impl::InjectionHelper::TableName (entity) +
                 "(" + strFmt + ");");
         }

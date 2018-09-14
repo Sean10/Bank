@@ -313,8 +313,11 @@ json Dispatcher::GetOrderTable(json& requestInfo)
     std::cout << "[INFO] Get Order Table request comes" << std::endl;
     ORMapper mapper(DATABASE_NAME);
     OrderInfo orderInfo;
+    auto field = FieldExtractor{
+            orderInfo};
 
-    auto result = mapper.Query(orderInfo).ToList();
+
+    auto result = mapper.Query(orderInfo).Where(field(orderInfo.out_account) & ('%'+requestInfo["condition"].get<std::string>()+'%')).ToList();
     if (result.empty())
     {
         responseInfo["define"] = SERVER_ERROR;
