@@ -12,7 +12,7 @@ using namespace BOT_ORM;
 class OrderInfo
 {
 public:
-//    int id;
+    std::string uuid;
     int type;
     int amount;
     std::string out_account;
@@ -20,7 +20,7 @@ public:
 
     long record_time;
 
-    ORMAP("OrderInfo", type, amount, out_account, in_account, record_time);
+    ORMAP("OrderInfo", uuid, type, amount, out_account, in_account, record_time);
 };
 
 

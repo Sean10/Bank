@@ -6,6 +6,7 @@
 #include "userlobby.h"
 #include "ui_userlobby.h"
 #include "json.hpp"
+#include "sole.hpp"
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QString>
@@ -109,8 +110,10 @@ void UserLobby::LogOut()
 
 void UserLobby::SendOrder(int orderType, int amount)
 {
+    std::string orderUUID = sole::uuid1().str();
     json sendInfo = {
         {"define", orderType},
+        {"uuid", orderUUID},
         {"username", client_->GetUserName()},
         {"amount", amount}
     };
@@ -119,7 +122,7 @@ void UserLobby::SendOrder(int orderType, int amount)
 
     if (receiveInfo["define"].get<int>() == SERVER_ERROR)
     {
-        QMessageBox::information(this, "Error", QString::fromLocal8Bit("存款充值失败"));
+        QMessageBox::information(this, "Error", QString::fromLocal8Bit("存取款失败"));
         return;
     }
 
@@ -129,8 +132,10 @@ void UserLobby::SendOrder(int orderType, int amount)
 
 void UserLobby::SendOrder(int orderType, int amount, std::string in_account)
 {
+    std::string orderUUID = sole::uuid1().str();
     json sendInfo = {
         {"define", orderType},
+        {"uuid", orderUUID},
         {"amount", amount},
         {"out_account", client_->GetUserName()},
         {"in_account", in_account}
@@ -140,7 +145,7 @@ void UserLobby::SendOrder(int orderType, int amount, std::string in_account)
 
     if (receiveInfo["define"].get<int>() == SERVER_ERROR)
     {
-        QMessageBox::information(this, "Error", QString::fromLocal8Bit("存款充值失败"));
+        QMessageBox::information(this, "Error", QString::fromLocal8Bit("转账失败"));
         return;
     }
 

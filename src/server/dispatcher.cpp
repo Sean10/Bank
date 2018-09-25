@@ -181,11 +181,12 @@ json Dispatcher::OrderDepositHandle(json &requestInfo)
     UserInfo userInfo;
     time_t record_time = time(NULL);
     OrderInfo orderInfo{
+                        requestInfo["uuid"].get<std::string>(),
                         requestInfo["define"].get<int>(),
                         requestInfo["amount"].get<int>(),
                         "cash",
                         requestInfo["username"].get<std::string>(),
-                        record_time
+                        static_cast<long>(record_time)
         };
 
     auto field = FieldExtractor{
@@ -215,11 +216,12 @@ json Dispatcher::OrderDepositHandle(json &requestInfo)
 json Dispatcher::OrderWithdrawHandle(json &requestInfo)
 {
     json responseInfo;
-    std::cout << "[INFO] Order Deposit request comes" << std::endl;
+    std::cout << "[INFO] Order Withdraw request comes" << std::endl;
     ORMapper mapper(DATABASE_NAME);
     UserInfo userInfo;
     time_t record_time = time(NULL);
     OrderInfo orderInfo{
+                        requestInfo["uuid"].get<std::string>(),
                         requestInfo["define"].get<int>(),
                         requestInfo["amount"].get<int>(),
                         requestInfo["username"].get<std::string>(),
@@ -265,6 +267,7 @@ json Dispatcher::OrderTransferHandle(json &requestInfo)
     UserInfo userInfo;
     time_t record_time = time(NULL);
     OrderInfo orderInfo{
+                        requestInfo["uuid"].get<std::string>(),
                         requestInfo["define"].get<int>(),
                         requestInfo["amount"].get<int>(),
                         requestInfo["out_account"].get<std::string>(),

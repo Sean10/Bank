@@ -131,6 +131,8 @@ void Server::InitSql()
     BOT_ORM::ORMapper mapper(DATABASE_NAME);
     UserInfo userInfo;
     OrderInfo orderInfo;
+    auto field = FieldExtractor {
+                    orderInfo};
     try
     {
         mapper.CreateTbl(userInfo);
@@ -143,6 +145,7 @@ void Server::InitSql()
 
     try
     {
+        // 这里需要将那个id设置为自增主键
         mapper.CreateTbl(orderInfo);
         std::cout << "Created OrderInfo Table\n";
     }
