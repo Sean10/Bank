@@ -54,6 +54,12 @@ std::string Dispatcher::Dispatch(json requestInfo)
     case GET_USER_TABLE:
         responseInfo = GetUserTable(requestInfo);
         break;
+    case USER_MODIFY:
+        responseInfo = ModifyUserHandle(requestInfo);
+        break;
+    case USER_DELETE:
+        responseInfo = DeleteUserHandle(requestInfo);
+        break;
 
     default:
         responseInfo["define"] = SERVER_ERROR;
@@ -133,7 +139,8 @@ json Dispatcher::SignupHandle(json &requestInfo)
             {
                 privilege = requestInfo["privilege"].get<int>();
             }
-            UserInfo userinfo = { requestInfo["username"].get<std::string>(),
+            UserInfo userinfo = { requestInfo["uuid"].get<std::string>(),
+                                requestInfo["username"].get<std::string>(),
                                  requestInfo["password"].get<std::string>(), privilege, 0};
             mapper.Insert(userinfo);
         }
@@ -142,6 +149,79 @@ json Dispatcher::SignupHandle(json &requestInfo)
             throw std::runtime_error ("UserID has been Taken");
         }
         responseInfo["define"] = SIGN_UP_SUCCESS;
+    }
+
+    return std::move(responseInfo);
+}
+
+json Dispatcher::ModifyUserHandle(json &requestInfo)
+{
+    ORMapper mapper(DATABASE_NAME);
+    UserInfo userInfo;
+
+    auto field = FieldExtractor {
+                    userInfo};
+    json responseInfo;
+
+    std::cout << "[INFO] Signup request comes" << std::endl;
+
+    auto result = mapper.Query(userInfo).Where(field(userInfo.uuid) == requestInfo["uuid"].get<std::string>()).ToList();
+
+    if (result.empty())
+    {
+        responseInfo["define"] = SERVER_ERROR;
+        std::cout << "[ERROR] " << "No this user error" << std::endl;
+    }
+    else
+    {
+        try
+        {
+            UserInfo userinfo = { requestInfo["uuid"].get<std::string>(),
+                                requestInfo["username"].get<std::string>(),
+                                 requestInfo["password"].get<std::string>(),
+                                  requestInfo["privilege"].get<int>(), 0};
+            mapper.Update(userinfo);
+        }
+        catch (...)
+        {
+            throw std::runtime_error ("User cannot be updated");
+        }
+        responseInfo["define"] = ACCEPT;
+    }
+
+    return std::move(responseInfo);
+}
+
+json Dispatcher::DeleteUserHandle(json &requestInfo)
+{
+    ORMapper mapper(DATABASE_NAME);
+    UserInfo userInfo;
+
+    auto field = FieldExtractor {
+                    userInfo};
+    json responseInfo;
+
+    std::cout << "[INFO] Delete user request comes" << std::endl;
+
+    auto result = mapper.Query(userInfo).Where(field(userInfo.uuid) == requestInfo["uuid"].get<std::string>()).ToList();
+
+    if (result.empty())
+    {
+        responseInfo["define"] = SERVER_ERROR;
+        std::cout << "[ERROR] " << "No this user error" << std::endl;
+    }
+    else
+    {
+        try
+        {
+            UserInfo userinfo = { requestInfo["uuid"].get<std::string>()};
+            mapper.Delete(userinfo);
+        }
+        catch (...)
+        {
+            throw std::runtime_error ("User cannot be deleted");
+        }
+        responseInfo["define"] = ACCEPT;
     }
 
     return std::move(responseInfo);
@@ -376,6 +456,7 @@ void Dispatcher::Logout()
 json Dispatcher::OrderInfoToJson(const OrderInfo& orderInfo)
 {
     return json {
+        {"uuid", orderInfo.uuid},
         {"type", orderInfo.type},
         {"amount", orderInfo.amount},
         {"out_account", orderInfo.out_account},
@@ -387,6 +468,7 @@ json Dispatcher::OrderInfoToJson(const OrderInfo& orderInfo)
 json Dispatcher::UserInfoToJson(const UserInfo& userInfo)
 {
     return json{
+        {"uuid", userInfo.uuid},
         {"username", userInfo.username},
         {"password", userInfo.password},
         {"balance", userInfo.balance},

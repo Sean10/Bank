@@ -8,6 +8,7 @@
 #include "dispatcher.h"
 #include "../define.h"
 #include "json.hpp"
+#include "sole.hpp"
 #include "ormlite.h"
 #include "../model/userinfo.h"
 #include <iostream>
@@ -132,7 +133,7 @@ void Server::InitSql()
     UserInfo userInfo;
     OrderInfo orderInfo;
     auto field = FieldExtractor {
-                    orderInfo};
+                    userInfo,orderInfo};
     try
     {
         mapper.CreateTbl(userInfo);
@@ -145,7 +146,6 @@ void Server::InitSql()
 
     try
     {
-        // 这里需要将那个id设置为自增主键
         mapper.CreateTbl(orderInfo);
         std::cout << "Created OrderInfo Table\n";
     }
@@ -154,17 +154,23 @@ void Server::InitSql()
         std::cerr << ex.what() << std::endl;
     }
 
+    std::string name = "sean10";
+    auto result = mapper.Query(userInfo).Where(field(userInfo.username) == name).ToList();
 
-    UserInfo userInfo2{"sean10", "123", 100, 1};
-    try
+    if (result.empty())
     {
-        mapper.Insert(userInfo2);
+        auto uuid = sole::uuid1().str();
+        UserInfo userInfo2{uuid, "sean10", "123", 100, 1};
+        try
+        {
+            mapper.Insert(userInfo2);
+        }
+        catch (const std::exception &ex)
+        {
+            std::cerr << ex.what() << std::endl;
+        }
+        std::cout << "Succeed to Insert " << std::endl;
     }
-    catch (const std::exception &ex)
-    {
-        std::cerr << ex.what() << std::endl;
-    }
-    std::cout << "Succeed to Insert " << std::endl;
 }
 
 bool Server::Online(std::string username, int connection)

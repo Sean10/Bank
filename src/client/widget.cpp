@@ -9,6 +9,7 @@
 #include "stackwidget.h"
 
 #include "json.hpp"
+#include "sole.hpp"
 #include <QMessageBox>
 #include <QPainter>
 #include <QBrush>
@@ -111,6 +112,7 @@ void Widget::Login()
 
 void Widget::Signup()
 {
+    auto uuid = sole::uuid1().str();
     auto username = ui->edit_username->text().toStdString();
     auto password = ui->edit_password->text().toStdString();
 
@@ -120,6 +122,7 @@ void Widget::Signup()
         // 发送注册请求
         json sendInfo = {
             {"define", SIGN_UP},
+            {"uuid", uuid},
             {"username", username},
             {"password", password}
         };

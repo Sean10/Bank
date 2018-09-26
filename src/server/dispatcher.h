@@ -54,6 +54,12 @@ public:
     // 与该Dispatch绑定用户登出
     void Logout();
 
+    // 修改用户信息
+    json ModifyUserHandle(json&);
+
+    // 删除指定用户
+    json DeleteUserHandle(json&);
+
     // 获取Dispatcher的内部状态
     int getState() { return state_; }
 

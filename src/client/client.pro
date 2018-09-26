@@ -18,7 +18,6 @@ SOURCES += main.cpp \
     userlobby.cpp \
     dialogorder.cpp \
     detailwidget.cpp \
-    tablemodel.cpp \
     userswidget.cpp \
     dialoguser.cpp
 
@@ -30,7 +29,6 @@ HEADERS += \
     userlobby.h \
     dialogorder.h \
     detailwidget.h \
-    tablemodel.h \
     userswidget.h \
     dialoguser.h
 

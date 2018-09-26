@@ -6,6 +6,7 @@
 #include "userswidget.h"
 #include "ui_userswidget.h"
 #include "../define.h"
+#include "sole.hpp"
 #include <QMessageBox>
 
 UsersWidget::UsersWidget(Sean_Socket::Client *client_, QWidget *parent) :
@@ -27,7 +28,7 @@ UsersWidget::~UsersWidget()
 void UsersWidget::InitUI()
 {
     model_ = new QStandardItemModel;
-    QStringList labels = QObject::trUtf8("用户名,密码,余额,权限").simplified().split(",");
+    QStringList labels = QObject::trUtf8("uuid, 用户名,密码,余额,权限").simplified().split(",");
     model_->setHorizontalHeaderLabels(labels);
 
 
@@ -43,6 +44,7 @@ void UsersWidget::InitConnect()
     connect(ui->buttonSearch, SIGNAL(clicked()), this, SLOT(Search()));
     connect(ui->buttonModify, SIGNAL(clicked()), this, SLOT(DialogModifyUser()));
     connect(ui->buttonCreate, SIGNAL(clicked()), this, SLOT(DialogCreateUser()));
+    connect(ui->buttonDelete, SIGNAL(clicked()), this, SLOT(DialogDeleteUser()));
 }
 
 void UsersWidget::BackToLobby()
@@ -59,14 +61,16 @@ void UsersWidget::Search()
     int j = 0;
     for (auto &i: result["content"])
     {
-        item = new QStandardItem(QString("%1").arg(QString::fromStdString(i["username"].get<std::string>())));
+        item = new QStandardItem(QString("%1").arg(QString::fromStdString(i["uuid"].get<std::string>())));
         model_->setItem(j, 0, item);
-        item = new QStandardItem(QString("%1").arg(QString::fromStdString(i["password"].get<std::string>())));
+        item = new QStandardItem(QString("%1").arg(QString::fromStdString(i["username"].get<std::string>())));
         model_->setItem(j, 1, item);
-        item = new QStandardItem(QString("%1").arg(i["balance"].get<int>()));
+        item = new QStandardItem(QString("%1").arg(QString::fromStdString(i["password"].get<std::string>())));
         model_->setItem(j, 2, item);
-        item = new QStandardItem(QString("%1").arg(i["privilege"].get<int>()));
+        item = new QStandardItem(QString("%1").arg(i["balance"].get<int>()));
         model_->setItem(j, 3, item);
+        item = new QStandardItem(QString("%1").arg(i["privilege"].get<int>()));
+        model_->setItem(j, 4, item);
 //        char mbstr[100];
 //        long time_temp = i["record_time"].get<long>();
 ////        std::strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", std::localtime(time_temp));
@@ -81,22 +85,23 @@ void UsersWidget::Search()
 
 void UsersWidget::DialogCreateUser()
 {
+    auto uuid = sole::uuid1().str();
+
     dialog_ = new DialogUser(this);
     if (QDialog::Accepted == dialog_->exec())
     {
         std::string username = dialog_->GetUsername();
         std::string password = dialog_->GetPassword();
         int privilege = dialog_->GetPrivilege();
-        SendOrderUser(SIGN_UP, username, password, privilege);
+        SendOrderUser(SIGN_UP, uuid, username, password, privilege);
     }
 }
 
 void UsersWidget::DialogModifyUser()
 {
     QModelIndex index = ui->tableView->currentIndex();
-//    QStandardItem* item = model_->itemFromIndex(index.row());
     auto item = model_->takeRow(index.row());
-    std::cout << item.front()->text().toStdString() << std::endl;
+    auto uuid = item.front()->text().toStdString();
 
     dialog_ = new DialogUser(this);
     if (QDialog::Accepted == dialog_->exec())
@@ -104,15 +109,46 @@ void UsersWidget::DialogModifyUser()
         std::string username = dialog_->GetUsername();
         std::string password = dialog_->GetPassword();
         int privilege = dialog_->GetPrivilege();
-        SendOrderUser(USER_MODIFY, username, password, privilege);
+        SendOrderUser(USER_MODIFY, uuid, username, password, privilege);
     }
 }
 
-void UsersWidget::SendOrderUser(int type, std::string username, std::string password, int privilege)
+void UsersWidget::DialogDeleteUser()
+{
+    QModelIndex index = ui->tableView->currentIndex();
+    auto item = model_->takeRow(index.row());
+    auto uuid = item.front()->text().toStdString();
+
+    int ret = QMessageBox::warning(this, tr("确认"), tr("请问确认要删除该用户吗?"), QMessageBox::Yes | QMessageBox::No);
+    if (QMessageBox::Yes == ret)
+    {
+        SendOrderUser(USER_DELETE, uuid);
+    }
+}
+
+void UsersWidget::SendOrderUser(int type, std::string uuid)
+{
+    json sendInfo = {
+        {"define", type},
+        {"uuid", uuid}
+    };
+
+    json receiveInfo = json::parse(client_->Send(sendInfo.dump()));
+    if (receiveInfo["define"].get<int>() == SERVER_ERROR)
+    {
+            QMessageBox::information(this, "Error", QString::fromLocal8Bit("用户处理失败"));
+            return;
+    }
+
+    Search();
+}
+
+void UsersWidget::SendOrderUser(int type, std::string uuid, std::string username, std::string password, int privilege)
 {
 //    std::string
     json sendInfo = {
         {"define", type},
+        {"uuid", uuid},
         {"username", username},
         {"password", password},
         {"privilege", privilege}
@@ -121,7 +157,7 @@ void UsersWidget::SendOrderUser(int type, std::string username, std::string pass
     json receiveInfo = json::parse(client_->Send(sendInfo.dump()));
     if (receiveInfo["define"].get<int>() == SERVER_ERROR)
     {
-            QMessageBox::information(this, "Error", QString::fromLocal8Bit("创建用户失败"));
+            QMessageBox::information(this, "Error", QString::fromLocal8Bit("用户处理失败"));
             return;
     }
 

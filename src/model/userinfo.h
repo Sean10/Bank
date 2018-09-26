@@ -13,7 +13,7 @@ using namespace BOT_ORM;
 class UserInfo
 {
 public:
-//    int id;
+    std::string uuid;
     std::string username;
     std::string password;
 
@@ -22,7 +22,7 @@ public:
 
 //    long lastModifyTime;
 
-    ORMAP("UserInfo", username, password, balance, privilege);
+    ORMAP("UserInfo", uuid, username, password, balance, privilege);
 
 };
 

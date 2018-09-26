@@ -34,12 +34,14 @@ private slots:
     void Search();
     void DialogCreateUser();
     void DialogModifyUser();
+    void DialogDeleteUser();
 
 private:
     Ui::UsersWidget *ui;
     Sean_Socket::Client *client_;
     DialogUser *dialog_;
-    void SendOrderUser(int type, std::string username, std::string password, int privilege);
+    void SendOrderUser(int type, std::string uuid);
+    void SendOrderUser(int type, std::string uuid, std::string username, std::string password, int privilege);
 
     QStandardItemModel* model_;
 
