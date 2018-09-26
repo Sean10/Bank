@@ -20,9 +20,9 @@ public:
     int balance;
     int privilege;
 
-//    long lastModifyTime;
+    long lastModifyTime;
 
-    ORMAP("UserInfo", uuid, username, password, balance, privilege);
+    ORMAP("UserInfo", uuid, username, password, balance, privilege, lastModifyTime);
 
 };
 

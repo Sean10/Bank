@@ -127,6 +127,7 @@ json Dispatcher::SignupHandle(json &requestInfo)
     std::cout << "[INFO] Signup request comes" << std::endl;
 
     auto result = mapper.Query(userInfo).Where(field(userInfo.username) == requestInfo["username"].get<std::string>()).ToList();
+    time_t recordTime = time(NULL);
 
     if (!result.empty())
     {
@@ -144,7 +145,9 @@ json Dispatcher::SignupHandle(json &requestInfo)
             }
             UserInfo userinfo = { requestInfo["uuid"].get<std::string>(),
                                 requestInfo["username"].get<std::string>(),
-                                 requestInfo["password"].get<std::string>(), privilege, 0};
+                                 requestInfo["password"].get<std::string>(), privilege,
+                                  0,
+                                  static_cast<long>(recordTime)};
             mapper.Insert(userinfo);
         }
         catch (...)
@@ -169,6 +172,7 @@ json Dispatcher::ModifyUserHandle(json &requestInfo)
     std::cout << "[INFO] Signup request comes" << std::endl;
 
     auto result = mapper.Query(userInfo).Where(field(userInfo.uuid) == requestInfo["uuid"].get<std::string>()).ToList();
+    time_t recordTime = time(NULL);
 
     if (result.empty())
     {
@@ -182,7 +186,9 @@ json Dispatcher::ModifyUserHandle(json &requestInfo)
             UserInfo userinfo = { requestInfo["uuid"].get<std::string>(),
                                 requestInfo["username"].get<std::string>(),
                                  requestInfo["password"].get<std::string>(),
-                                  requestInfo["privilege"].get<int>(), result.front().balance};
+                                  requestInfo["privilege"].get<int>(),
+                                  result.front().balance,
+                                static_cast<long>(recordTime)};
             mapper.Update(userinfo);
         }
         catch (...)
@@ -207,6 +213,7 @@ json Dispatcher::ModifyUserPasswordHandle(json &requestInfo)
     std::cout << "[INFO] User change password request comes" << std::endl;
 
     auto result = mapper.Query(userInfo).Where(field(userInfo.username) == requestInfo["username"].get<std::string>()).ToList();
+    time_t recordTime = time(NULL);
 
     if (result.empty())
     {
@@ -221,7 +228,8 @@ json Dispatcher::ModifyUserPasswordHandle(json &requestInfo)
                                 result.front().username,
                                  requestInfo["password"].get<std::string>(),
                                   result.front().privilege,
-                                result.front().balance};
+                                result.front().balance,
+                                static_cast<long>(recordTime)};
             mapper.Update(userinfo);
         }
         catch (...)
@@ -321,6 +329,8 @@ json Dispatcher::OrderDepositHandle(json &requestInfo)
 
     auto users = mapper.Query(userInfo).Where(field(userInfo.username) == requestInfo["username"].get<std::string>()).ToList();
     users.front().balance += requestInfo["amount"].get<int>();
+    time_t recordTime = time(NULL);
+    users.front().lastModifyTime = static_cast<long>(recordTime);
 
     try
     {
@@ -367,6 +377,8 @@ json Dispatcher::OrderWithdrawHandle(json &requestInfo)
         return std::move(responseInfo);
     }
     users.front().balance -= requestInfo["amount"].get<int>();
+    time_t recordTime = time(NULL);
+    users.front().lastModifyTime = static_cast<long>(recordTime);
 
     try
     {
@@ -413,9 +425,14 @@ json Dispatcher::OrderTransferHandle(json &requestInfo)
         return std::move(responseInfo);
     }
     users.front().balance -= requestInfo["amount"].get<int>();
+    time_t recordTime = time(NULL);
+    users.front().lastModifyTime = static_cast<long>(recordTime);
     mapper.Update(users.front());
+
     users = mapper.Query(userInfo).Where(field(userInfo.username) == requestInfo["in_account"].get<std::string>()).ToList();
     users.front().balance += requestInfo["amount"].get<int>();
+//    recordTime = time(NULL);
+    users.front().lastModifyTime = static_cast<long>(recordTime);
 
     mapper.Update(users.front());
 
@@ -514,6 +531,7 @@ json Dispatcher::UserInfoToJson(const UserInfo& userInfo)
         {"username", userInfo.username},
         {"password", userInfo.password},
         {"balance", userInfo.balance},
-        {"privilege", userInfo.privilege}
+        {"privilege", userInfo.privilege},
+        {"lastModifyTime", userInfo.lastModifyTime}
     };
 }

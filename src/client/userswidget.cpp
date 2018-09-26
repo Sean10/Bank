@@ -28,7 +28,7 @@ UsersWidget::~UsersWidget()
 void UsersWidget::InitUI()
 {
     model_ = new QStandardItemModel;
-    QStringList labels = QObject::trUtf8("uuid, 用户名,密码,余额,权限").simplified().split(",");
+    QStringList labels = QObject::trUtf8("uuid, 用户名,密码,余额,权限, 最后操作时间").simplified().split(",");
     model_->setHorizontalHeaderLabels(labels);
 
 
@@ -71,11 +71,16 @@ void UsersWidget::Search()
         model_->setItem(j, 3, item);
         item = new QStandardItem(QString("%1").arg(i["privilege"].get<int>()));
         model_->setItem(j, 4, item);
-//        char mbstr[100];
-//        long time_temp = i["record_time"].get<long>();
-////        std::strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", std::localtime(time_temp));
-//        item = new QStandardItem(QString("%1").arg(time_temp));
-//        model_->setItem(j, 3, item);
+        char mbstr[100];
+        long time_temp = i["lastModifyTime"].get<long>();
+        time_t tick = (time_t)time_temp;
+        struct tm tm;
+        tm = *localtime(&tick);
+        strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", &tm);
+        std::string s = mbstr;
+//        std::strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", std::localtime(time_temp));
+        item = new QStandardItem(QString("%1").arg(QString::fromStdString(s)));
+        model_->setItem(j, 5, item);
         j += 1;
     }
 
