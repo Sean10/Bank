@@ -126,3 +126,5 @@ int Client::GetPrivilege()
 {
     return this->privilege_;
 }
+
+

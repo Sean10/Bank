@@ -60,6 +60,9 @@ std::string Dispatcher::Dispatch(json requestInfo)
     case USER_DELETE:
         responseInfo = DeleteUserHandle(requestInfo);
         break;
+    case USER_PASSWORD:
+        responseInfo = ModifyUserPasswordHandle(requestInfo);
+        break;
 
     default:
         responseInfo["define"] = SERVER_ERROR;
@@ -179,12 +182,51 @@ json Dispatcher::ModifyUserHandle(json &requestInfo)
             UserInfo userinfo = { requestInfo["uuid"].get<std::string>(),
                                 requestInfo["username"].get<std::string>(),
                                  requestInfo["password"].get<std::string>(),
-                                  requestInfo["privilege"].get<int>(), 0};
+                                  requestInfo["privilege"].get<int>(), result.front().balance};
             mapper.Update(userinfo);
         }
         catch (...)
         {
             throw std::runtime_error ("User cannot be updated");
+        }
+        responseInfo["define"] = ACCEPT;
+    }
+
+    return std::move(responseInfo);
+}
+
+json Dispatcher::ModifyUserPasswordHandle(json &requestInfo)
+{
+    ORMapper mapper(DATABASE_NAME);
+    UserInfo userInfo;
+
+    auto field = FieldExtractor {
+                    userInfo};
+    json responseInfo;
+
+    std::cout << "[INFO] User change password request comes" << std::endl;
+
+    auto result = mapper.Query(userInfo).Where(field(userInfo.username) == requestInfo["username"].get<std::string>()).ToList();
+
+    if (result.empty())
+    {
+        responseInfo["define"] = SERVER_ERROR;
+        std::cout << "[ERROR] " << "No this user error" << std::endl;
+    }
+    else
+    {
+        try
+        {
+            UserInfo userinfo = { result.front().uuid,
+                                result.front().username,
+                                 requestInfo["password"].get<std::string>(),
+                                  result.front().privilege,
+                                result.front().balance};
+            mapper.Update(userinfo);
+        }
+        catch (...)
+        {
+            throw std::runtime_error ("User cannot be change password");
         }
         responseInfo["define"] = ACCEPT;
     }

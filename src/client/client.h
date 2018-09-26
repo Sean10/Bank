@@ -48,6 +48,11 @@ public:
     //      用户名
     std::string GetUserName() { return username_; }
 
+    // 获取该client绑定的uuid
+    // @return:
+    //      用户名
+    std::string GetUuid() { return uuid_; }
+
     // 获取该client使用的用户的权限等级
     // @return:
     //      权限等级
@@ -68,6 +73,8 @@ protected:
     sockaddr_in serverAddr_;
     // 用户名
     string username_;
+    // UUID
+    string uuid_;
     // 权限等级
     int privilege_;
 };

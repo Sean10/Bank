@@ -7,6 +7,7 @@
 #include "ui_dialogorder.h"
 #include "../define.h"
 #include <QString>
+#include <QRegExp>
 
 DialogOrder::DialogOrder(int orderType, QWidget *parent) :
     QDialog(parent),
@@ -35,6 +36,9 @@ void DialogOrder::InitUI()
         ui->labelOutAccount->setVisible(false);
         ui->lineOutAccount->setVisible(false);
     }
+
+    QRegExp rx("^[1-9][0-9]*$");
+    ui->lineAmount->setValidator(new QRegExpValidator(rx, this));
 }
 
 void DialogOrder::InitConnect()

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>511</width>
+    <height>306</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
   <widget class="QPushButton" name="buttonBack">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>390</x>
      <y>10</y>
      <width>113</width>
      <height>32</height>
@@ -52,7 +52,7 @@
   <widget class="QLineEdit" name="lineSearch">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>130</x>
      <y>10</y>
      <width>113</width>
      <height>21</height>

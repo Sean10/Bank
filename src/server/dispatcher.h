@@ -57,6 +57,9 @@ public:
     // 修改用户信息
     json ModifyUserHandle(json&);
 
+    // 用户修改密码
+    json ModifyUserPasswordHandle(json&);
+
     // 删除指定用户
     json DeleteUserHandle(json&);
 

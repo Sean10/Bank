@@ -33,6 +33,7 @@ void UserLobby::InitConnect()
     connect(ui->buttonTransfer, SIGNAL(clicked()), this, SLOT(DialogTransfer()));
     connect(ui->buttonOrderTable, SIGNAL(clicked()), this, SLOT(EmitOrderTable()));
     connect(ui->buttonUserTable, SIGNAL(clicked()), this, SLOT(EmitUserTable()));
+    connect(ui->buttonChangePassword, SIGNAL(clicked()), this, SLOT(DialogChangePassword()));
 //    connect(ui->buttonOrderTable, SIGNAL(clicked()), this, SLOT(WidgetOrderTable()));
 }
 
@@ -45,6 +46,7 @@ void UserLobby::InitUI()
         ui->buttonOrderTable->setVisible(true);
         ui->label_4->setVisible(true);
         ui->buttonUserTable->setVisible(true);
+        ui->buttonChangePassword->setVisible(false);
     }
     else
     {
@@ -52,6 +54,7 @@ void UserLobby::InitUI()
         ui->buttonOrderTable->setVisible(false);
         ui->label_4->setVisible(false);
         ui->buttonUserTable->setVisible(false);
+        ui->buttonChangePassword->setVisible(true);
     }
 
     emit setBalance();
@@ -100,6 +103,16 @@ void UserLobby::DialogTransfer()
 
 }
 
+void UserLobby::DialogChangePassword()
+{
+    dialogPassword_ = new DialogPassword(this);
+    if (QDialog::Accepted == dialogPassword_->exec())
+    {
+        std::string password = dialogPassword_->GetPassword();
+        SendOrder(USER_PASSWORD, client_->GetUserName(), password);
+    }
+}
+
 void UserLobby::LogOut()
 {
     // 释放所有资源
@@ -128,6 +141,23 @@ void UserLobby::SendOrder(int orderType, int amount)
 
     emit setBalance();
 
+}
+
+void UserLobby::SendOrder(int orderType, std::string username, std::string password)
+{
+    json sendInfo = {
+        {"define", orderType},
+        {"username", username},
+        {"password", password}
+    };
+
+    json receiveInfo = json::parse(client_->Send(sendInfo.dump()));
+
+    if (receiveInfo["define"].get<int>() == SERVER_ERROR)
+    {
+        QMessageBox::information(this, "Error", QString::fromLocal8Bit("修改密码失败"));
+        return;
+    };
 }
 
 void UserLobby::SendOrder(int orderType, int amount, std::string in_account)

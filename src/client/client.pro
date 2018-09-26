@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     dialogorder.cpp \
     detailwidget.cpp \
     userswidget.cpp \
-    dialoguser.cpp
+    dialoguser.cpp \
+    dialogpassword.cpp
 
 HEADERS += \
             widget.h \
@@ -30,7 +31,8 @@ HEADERS += \
     dialogorder.h \
     detailwidget.h \
     userswidget.h \
-    dialoguser.h
+    dialoguser.h \
+    dialogpassword.h
 
 FORMS += \
         widget.ui \
@@ -39,5 +41,6 @@ FORMS += \
     dialogorder.ui \
     detailwidget.ui \
     userswidget.ui \
-    dialoguser.ui
+    dialoguser.ui \
+    dialogpassword.ui
 

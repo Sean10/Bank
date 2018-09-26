@@ -70,8 +70,13 @@ void DetailWidget::Search()
         model_->setItem(j, 2, item);
         char mbstr[100];
         long time_temp = i["record_time"].get<long>();
+        time_t tick = (time_t)time_temp;
+        struct tm tm;
+        tm = *localtime(&tick);
+        strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", &tm);
+        std::string s = mbstr;
 //        std::strftime(mbstr, sizeof(mbstr), "%Y-%m-%d %H:%M:%S", std::localtime(time_temp));
-        item = new QStandardItem(QString("%1").arg(time_temp));
+        item = new QStandardItem(QString("%1").arg(QString::fromStdString(s)));
         model_->setItem(j, 3, item);
         j += 1;
     }

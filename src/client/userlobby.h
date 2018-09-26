@@ -9,6 +9,7 @@
 #include <QWidget>
 #include "dialogorder.h"
 #include "client.h"
+#include "dialogpassword.h"
 
 namespace Ui {
 class UserLobby;
@@ -32,6 +33,7 @@ private slots:
     void DialogDeposit();
     void DialogWithdraw();
     void DialogTransfer();
+    void DialogChangePassword();
 //    void WidgetOrderTable();
 
 
@@ -44,9 +46,11 @@ signals:
 private:
     Ui::UserLobby *ui;
     DialogOrder *dialog;
+    DialogPassword *dialogPassword_;
 
 //    void SendOrder(int orderType, int amount, ...);
     void SendOrder(int orderType, int amount);
+    void SendOrder(int orderType, std::string username, std::string password);
     void SendOrder(int orderType, int amount, std::string in_account);
     void InitConnect();
     void InitUI();

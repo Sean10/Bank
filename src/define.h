@@ -31,6 +31,7 @@
 #define USER_CREATE 9 // 创建用户
 #define USER_MODIFY 10 // 修改用户
 #define USER_DELETE 11 // 删除用户
+#define USER_PASSWORD 12 // 修改用户密码
 
 /*--------------------返回状态------------------------*/
 
