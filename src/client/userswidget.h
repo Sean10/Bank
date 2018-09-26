@@ -10,6 +10,7 @@
 #include <json.hpp>
 #include "client.h"
 #include <QStandardItemModel>
+#include "dialoguser.h"
 
 using json = nlohmann::json;
 
@@ -31,12 +32,18 @@ signals:
 private slots:
     void BackToLobby();
     void Search();
+    void DialogCreateUser();
+    void DialogModifyUser();
 
 private:
     Ui::UsersWidget *ui;
     Sean_Socket::Client *client_;
+    DialogUser *dialog_;
+    void SendOrderUser(int type, std::string username, std::string password, int privilege);
 
     QStandardItemModel* model_;
+
+
     json GetUserTable();
 
     void InitUI();

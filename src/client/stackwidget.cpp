@@ -29,7 +29,7 @@ StackWidget::~StackWidget()
 
 void StackWidget::InitUi()
 {
-    setFixedSize(400, 300);
+    setFixedSize(561, 356);
     setWindowFlags(Qt::FramelessWindowHint);
 
     // 加载stacklayout的各个分视图

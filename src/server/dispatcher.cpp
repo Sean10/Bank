@@ -128,8 +128,13 @@ json Dispatcher::SignupHandle(json &requestInfo)
     {
         try
         {
+            int privilege = 0;
+            if (requestInfo.end() != requestInfo.find("privilege"))
+            {
+                privilege = requestInfo["privilege"].get<int>();
+            }
             UserInfo userinfo = { requestInfo["username"].get<std::string>(),
-                                 requestInfo["password"].get<std::string>(), 0, 0};
+                                 requestInfo["password"].get<std::string>(), privilege, 0};
             mapper.Insert(userinfo);
         }
         catch (...)
@@ -343,8 +348,10 @@ json Dispatcher::GetUserTable(json& requestInfo)
     std::cout << "[INFO] Get User Table request comes" << std::endl;
     ORMapper mapper(DATABASE_NAME);
     UserInfo userInfo;
+    auto field = FieldExtractor{
+            userInfo};
 
-    auto result = mapper.Query(userInfo).ToList();
+    auto result = mapper.Query(userInfo).Where(field(userInfo.username) & ('%'+requestInfo["condition"].get<std::string>()+'%')).ToList();
     if (result.empty())
     {
         responseInfo["define"] = SERVER_ERROR;

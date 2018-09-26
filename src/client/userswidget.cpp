@@ -33,6 +33,7 @@ void UsersWidget::InitUI()
 
 
 //    json result = GetOrderTable();
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView->setModel(model_);
 }
 
@@ -40,6 +41,8 @@ void UsersWidget::InitConnect()
 {
     connect(ui->buttonBack, SIGNAL(clicked()), this, SLOT(BackToLobby()));
     connect(ui->buttonSearch, SIGNAL(clicked()), this, SLOT(Search()));
+    connect(ui->buttonModify, SIGNAL(clicked()), this, SLOT(DialogModifyUser()));
+    connect(ui->buttonCreate, SIGNAL(clicked()), this, SLOT(DialogCreateUser()));
 }
 
 void UsersWidget::BackToLobby()
@@ -76,18 +79,69 @@ void UsersWidget::Search()
 }
 
 
+void UsersWidget::DialogCreateUser()
+{
+    dialog_ = new DialogUser(this);
+    if (QDialog::Accepted == dialog_->exec())
+    {
+        std::string username = dialog_->GetUsername();
+        std::string password = dialog_->GetPassword();
+        int privilege = dialog_->GetPrivilege();
+        SendOrderUser(SIGN_UP, username, password, privilege);
+    }
+}
+
+void UsersWidget::DialogModifyUser()
+{
+    QModelIndex index = ui->tableView->currentIndex();
+//    QStandardItem* item = model_->itemFromIndex(index.row());
+    auto item = model_->takeRow(index.row());
+    std::cout << item.front()->text().toStdString() << std::endl;
+
+    dialog_ = new DialogUser(this);
+    if (QDialog::Accepted == dialog_->exec())
+    {
+        std::string username = dialog_->GetUsername();
+        std::string password = dialog_->GetPassword();
+        int privilege = dialog_->GetPrivilege();
+        SendOrderUser(USER_MODIFY, username, password, privilege);
+    }
+}
+
+void UsersWidget::SendOrderUser(int type, std::string username, std::string password, int privilege)
+{
+//    std::string
+    json sendInfo = {
+        {"define", type},
+        {"username", username},
+        {"password", password},
+        {"privilege", privilege}
+    };
+
+    json receiveInfo = json::parse(client_->Send(sendInfo.dump()));
+    if (receiveInfo["define"].get<int>() == SERVER_ERROR)
+    {
+            QMessageBox::information(this, "Error", QString::fromLocal8Bit("创建用户失败"));
+            return;
+    }
+
+    Search();
+}
+
+
 json UsersWidget::GetUserTable()
 {
     // 这里没有写权限校验
     json sendInfo = {
-        {"define", GET_USER_TABLE}
+        {"define", GET_USER_TABLE},
+        {"condition", ui->lineSearch->text().toStdString()}
     };
 
     json receiveInfo = json::parse(client_->Send(sendInfo.dump()));
 
     if (receiveInfo["define"].get<int>() == SERVER_ERROR)
     {
-        QMessageBox::information(this, "Error", QString::fromLocal8Bit("获取订单数据失败"));
+        QMessageBox::information(this, "Error", QString::fromLocal8Bit("获取用户数据失败"));
         return {};
     }
 
