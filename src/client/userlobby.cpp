@@ -1,7 +1,9 @@
-/*
- *  @file   userlobby.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 用户主界面类定义文件
+ * 
+ * @file userlobby.cpp
+ * @author your name
+ * @date 2018-09-27
  */
 #include "userlobby.h"
 #include "ui_userlobby.h"
@@ -14,6 +16,12 @@
 
 using json = nlohmann::json;
 
+/**
+ * @brief Construct a new User Lobby:: User Lobby object
+ * 
+ * @param client 该界面绑定的用户socket client
+ * @param parent 父界面指针
+ */
 UserLobby::UserLobby(Sean_Socket::Client *client, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::UserLobby),
@@ -61,6 +69,10 @@ void UserLobby::InitUI()
 
 }
 
+/**
+ * @brief Destroy the User Lobby:: User Lobby object
+ * 
+ */
 UserLobby::~UserLobby()
 {
     delete ui;

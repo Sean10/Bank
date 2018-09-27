@@ -1,11 +1,19 @@
-/*
- *  @file   stackwidget.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 界面切换管理类定义文件
+ * 
+ * @file stackwidget.cpp
+ * @author your name
+ * @date 2018-09-27
  */
 #include "stackwidget.h"
 #include "ui_stackwidget.h"
 
+/**
+ * @brief Construct a new Stack Widget:: Stack Widget object
+ * 
+ * @param client 该界面绑定的用户连接client
+ * @param parent 父界面指针
+ */
 StackWidget::StackWidget(Sean_Socket::Client *client, QWidget *parent)
     : QWidget(parent), client_(client),
     ui(new Ui::StackWidget),
@@ -18,6 +26,10 @@ StackWidget::StackWidget(Sean_Socket::Client *client, QWidget *parent)
     InitConnect();
 }
 
+/**
+ * @brief Destroy the Stack Widget:: Stack Widget object
+ * 
+ */
 StackWidget::~StackWidget()
 {
     delete ui;
@@ -27,6 +39,10 @@ StackWidget::~StackWidget()
     delete widgetUsersTable_;
 }
 
+/**
+ * @brief 初始化UI界面
+ * 
+ */
 void StackWidget::InitUi()
 {
     setFixedSize(561, 356);
@@ -40,7 +56,10 @@ void StackWidget::InitUi()
     stackLayout_->setCurrentIndex(0);
 }
 
-
+/**
+ * @brief 初始化信号槽
+ * 
+ */
 void StackWidget::InitConnect()
 {
     connect(userLobby_, SIGNAL(closeAll()), this, SLOT(close()));
@@ -50,11 +69,20 @@ void StackWidget::InitConnect()
     connect(widgetUsersTable_, SIGNAL(backToLobby()), this, SLOT(BackToLobby()));
 }
 
+/**
+ * @brief Set the Current Index object
+ * 
+ * @param index 视图的编号
+ */
 void StackWidget::SetCurrentIndex(int index)
 {
     stackLayout_->setCurrentIndex(index);
 }
 
+/**
+ * @brief 返回到主界面
+ * 
+ */
 void StackWidget::BackToLobby()
 {
     stackLayout_->setCurrentIndex(0);

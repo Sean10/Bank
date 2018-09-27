@@ -1,13 +1,20 @@
-/*
- *  @file   client.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief client socket连接成员函数文件
+ * 
+ * @file client.cpp
+ * @author 
+ * @date 2018-09-05
  */
 #include "client.h"
 #include "../define.h"
 
 using namespace Sean_Socket;
 
+/**
+ * @brief Construct a new Client:: Client object
+ * 
+ * @param name 用户名
+ */
 Client::Client(string name)
     : username_(name)
 {
@@ -88,15 +95,27 @@ Client::Client(string name)
 
 }
 
-
+/**
+ * @brief Destroy the Client:: Client object
+ * 
+ */
 Client::~Client()
 {
     shutdown(connectSocket_, 2);
+    //关闭连接
+    SSL_shutdown(ssl);
+    SSL_free(ssl);
+    SSL_CTX_free(ctx);
     close(connectSocket_);
 }
 
 
-
+/**
+ * @brief Client与服务器连接功能
+ * 
+ * @param requestInfo json序列化后请求信息
+ * @return std::string json序列化后的返回信息
+ */
 std::string Client::Connect(std::string requestInfo)
 {
     auto trys = 2;
@@ -148,6 +167,12 @@ std::string Client::Connect(std::string requestInfo)
     return std::move(Send(requestInfo));
 }
 
+/**
+ * @brief 发送数据包函数
+ * 
+ * @param requestInfo json序列化后请求信息
+ * @return std::string json序列化后的返回信息
+ */
 std::string Client::Send(std::string requestInfo)
 {
     int recvBufLen = DEFAULT_BUFFER_LEN;
@@ -159,17 +184,25 @@ std::string Client::Send(std::string requestInfo)
     strcpy(sendBuf, requestInfo.c_str());
 
     // 向服务器发送数据
-//    if (send( connectSocket_, sendBuf, sendBufLen, 0) == -1)
+    //    if (send( connectSocket_, sendBuf, sendBufLen, 0) == -1)
     if (SSL_write(ssl, sendBuf, sendBufLen) == -1)
     {
+        //关闭连接
+        SSL_shutdown(ssl);
+        SSL_free(ssl);
+        SSL_CTX_free(ctx);
         close( connectSocket_);
         throw std::runtime_error("Failed at send message");
     }
     cout << "[INFO] send complete" << endl;
     // 等待接受服务器的返回信息
-//    if (recv( connectSocket_, recvBuf, recvBufLen, 0) <= 0)
+    //    if (recv( connectSocket_, recvBuf, recvBufLen, 0) <= 0)
     if (SSL_read(ssl, recvBuf, recvBufLen) <= 0)
     {
+        //关闭连接
+        SSL_shutdown(ssl);
+        SSL_free(ssl);
+        SSL_CTX_free(ctx);
         close( connectSocket_);
         throw std::runtime_error("Failed at receive message");
     }
@@ -179,17 +212,34 @@ std::string Client::Send(std::string requestInfo)
     return std::move(std::string(recvBuf));
 }
 
+/**
+ * @brief 关闭与服务器连接函数
+ * 
+ */
 void Client::Close()
 {
+    //关闭连接
+    SSL_shutdown(ssl);
+    SSL_free(ssl);
+    SSL_CTX_free(ctx);
     close(connectSocket_);
 }
 
-
+/**
+ * @brief Set the Privilege object
+ * 
+ * @param privilege 权限等级
+ */
 void Client::SetPrivilege(int privilege)
 {
     this->privilege_ = privilege;
 }
 
+/**
+ * @brief Get the Privilege object
+ * 
+ * @return int 权限等级
+ */
 int Client::GetPrivilege()
 {
     return this->privilege_;

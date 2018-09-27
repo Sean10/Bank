@@ -149,7 +149,7 @@ Server::Server() : count_(0)
 
                 while(true)
                 {
-//                    if (recv(connection, recvBuf, recvBufLen, 0) <= 0)
+                    //                    if (recv(connection, recvBuf, recvBufLen, 0) <= 0)
                     if (SSL_read(ssl, recvBuf, recvBufLen) <= 0)
                     {
                         // 保证cout完整执行而不被其他线程打断
@@ -162,6 +162,10 @@ Server::Server() : count_(0)
 
                         // 断开连接
                         shutdown(connection, 2);
+                        //关闭连接
+                        SSL_shutdown(ssl);
+                        SSL_free(ssl);
+                        SSL_CTX_free(ctx);
                         close(connection);
                         break;
                     }
@@ -176,6 +180,10 @@ Server::Server() : count_(0)
                     catch (std::exception e)
                     {
                         shutdown(connection, 2);
+                        //关闭连接
+                        SSL_shutdown(ssl);
+                        SSL_free(ssl);
+                        SSL_CTX_free(ctx);
                         close(connection);
                         cout << "dispatch error" << endl;
                         cout << "[ERROR] " << e.what() << endl;
@@ -184,7 +192,7 @@ Server::Server() : count_(0)
                     char recvBuf[DEFAULT_BUFFER_LEN];
                     int recvBufLen = DEFAULT_BUFFER_LEN;
                     strcpy(recvBuf, responseStr.c_str());
-//                    if (send(connection, recvBuf, recvBufLen, 0) <= 0)
+                    //                    if (send(connection, recvBuf, recvBufLen, 0) <= 0)
                     if (SSL_write(ssl, recvBuf, recvBufLen) <= 0)
                     {
                         cout << "[ERROR] failed at send messager, code: " << errno << endl;
@@ -202,6 +210,10 @@ Server::Server() : count_(0)
 Server::~Server()
 {
     shutdown(listeningSocket_, 2);
+    //关闭连接
+    SSL_shutdown(ssl);
+    SSL_free(ssl);
+    SSL_CTX_free(ctx);
     close(listeningSocket_);
 }
 

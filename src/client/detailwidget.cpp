@@ -1,7 +1,9 @@
-/*
- *  @file   detailwidget.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 订单详情界面类定义文件
+ * 
+ * @file detailwidget.cpp
+ * @author 
+ * @date 2018-09-27
  */
 #include "detailwidget.h"
 #include "ui_detailwidget.h"
@@ -11,6 +13,12 @@
 #include <QLatin1String>
 #include <ctime>
 
+/**
+ * @brief Construct a new Detail Widget:: Detail Widget object
+ * 
+ * @param client_ client socket连接
+ * @param parent 父界面指针
+ */
 DetailWidget::DetailWidget(Sean_Socket::Client *client_, QWidget *parent) :
     client_(client_),
     QWidget(parent),
@@ -21,38 +29,53 @@ DetailWidget::DetailWidget(Sean_Socket::Client *client_, QWidget *parent) :
     InitConnect();
 }
 
+/**
+ * @brief Destroy the Detail Widget:: Detail Widget object
+ * 
+ */
 DetailWidget::~DetailWidget()
 {
     delete ui;
     delete model_;
 }
 
-
+/**
+ * @brief 初始化UI
+ * 
+ */
 void DetailWidget::InitUI()
 {
     model_ = new QStandardItemModel;
     QStringList labels = QObject::trUtf8("金额,转出账号,转入账号,时间").simplified().split(",");
     model_->setHorizontalHeaderLabels(labels);
 
-
-
-//    json result = GetOrderTable();
     ui->tableView->setModel(model_);
-
 
 }
 
+/**
+ * @brief 初始化连接
+ * 
+ */
 void DetailWidget::InitConnect()
 {
     connect(ui->buttonSearch, SIGNAL(clicked()), this, SLOT(Search()));
     connect(ui->buttonBack, SIGNAL(clicked()), this, SLOT(BackToLobby()));
 }
 
+/**
+ * @brief 回到主界面函数
+ * 
+ */
 void DetailWidget::BackToLobby()
 {
     emit backToLobby();
 }
 
+/**
+ * @brief 查找订单详情函数
+ * 
+ */
 void DetailWidget::Search()
 {
     std::cout << "start to search" << std::endl;
@@ -84,6 +107,11 @@ void DetailWidget::Search()
     std::cout << "succeed to get order table" << std::endl;
 }
 
+/**
+ * @brief Get the Order Table object
+ * 
+ * @return json 订单详情表
+ */
 json DetailWidget::GetOrderTable()
 {
     // 这里没有写权限校验

@@ -1,12 +1,19 @@
-/*
- *  @file   dialogpassword.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 修改密码对话框类定义文件
+ * 
+ * @file dialogpassword.cpp
+ * @author your name
+ * @date 2018-09-27
  */
 #include "dialogpassword.h"
 #include "ui_dialogpassword.h"
 #include <QMessageBox>
 
+/**
+ * @brief Construct a new Dialog Password:: Dialog Password object
+ * 
+ * @param parent 父界面指针
+ */
 DialogPassword::DialogPassword(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DialogPassword)
@@ -14,6 +21,10 @@ DialogPassword::DialogPassword(QWidget *parent) :
     ui->setupUi(this);
 }
 
+/**
+ * @brief Destroy the Dialog Password:: Dialog Password object
+ * 
+ */
 DialogPassword::~DialogPassword()
 {
     delete ui;
@@ -33,6 +44,10 @@ void DialogPassword::InitConnect()
 
 }
 
+/**
+ * @brief 重写QDialog accept事件
+ * 
+ */
 void DialogPassword::accept()
 {
     if (ui->lineOldPassword->text().isEmpty()
@@ -41,6 +56,10 @@ void DialogPassword::accept()
     {
         QMessageBox::information(this, tr("警告"), tr("请输入密码"));
         return ;
+    }
+    else if (ui->lineNewPassword->text() != ui->lineRepeatPassword->text())
+    {
+        QMessageBox::information(this, tr("警告"), tr("两次新密码不一致，请修改"));
     }
     QDialog::accept();
 }

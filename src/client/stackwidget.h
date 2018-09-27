@@ -1,7 +1,9 @@
-/*
- *  @file   stackwidget.h
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 界面切换管理类声明文件
+ * 
+ * @file stackwidget.h
+ * @author your name
+ * @date 2018-09-27
  */
 #ifndef STACKWIDGET_H
 #define STACKWIDGET_H
@@ -13,36 +15,63 @@
 #include "detailwidget.h"
 #include "userswidget.h"
 
+/**
+ * @brief Ui命名空间
+ * 
+ */
 namespace Ui
 {
     class StackWidget;
 }
 
-// 管理多个视图的切换
+/**
+ * @brief 界面切换管理类
+ * 管理多个视图的切换
+ */
 class StackWidget : public QWidget
 {
     Q_OBJECT
 public:
+    /**
+     * @brief Construct a new Stack Widget object
+     * 界面切换管理类构造函数
+     * @param client 该界面绑定的用户连接client
+     * @param parent 父界面指针
+     */
     explicit StackWidget(Sean_Socket::Client *client, QWidget *parent = 0);
+
+    /**
+     * @brief Destroy the Stack Widget object
+     * 界面切换管理类析构函数，释放各界面资源
+     */
     ~StackWidget();
-signals:
-    void signalsss(int sxx);
 
 public slots:
-    // 设置当前显示的视图
-    // @param:
-    //      index 视图的编号
+    /**
+     * @brief Set the Current Index object
+     * 设置当前显示的视图
+     * @param index 视图的编号
+     */
     void SetCurrentIndex(int index);
 
-    // 返回到主界面
+    /**
+     * @brief 返回到主界面
+     * 
+     */
     void BackToLobby();
 
 
 private:
-    // 初始化UI界面
+    /**
+     * @brief 初始化UI界面
+     * 
+     */
     void InitUi();
 
-    // 初始化信号槽
+    /**
+     * @brief 初始化信号槽
+     * 
+     */
     void InitConnect();
 
     // 该widget的ui界面指针
