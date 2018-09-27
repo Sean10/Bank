@@ -1,4 +1,9 @@
-INCLUDEPATH += $$PWD/include
+INCLUDEPATH += $$PWD/include \
+    /usr/local/Cellar/openssl/1.0.2o_1/include
+
+LIBS += -L/usr/local/Cellar/openssl/1.0.2o_1/lib \
+    -lcrypto \
+    -lssl
 
 SOURCES += \
         $$PWD/include/sqlite3.c \

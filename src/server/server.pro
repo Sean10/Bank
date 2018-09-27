@@ -2,6 +2,8 @@ CONFIG += c++14
 CONFIG -= app_bundle
 CONFIG -= qt
 
+QMAKE_CXXFLAGS += -lcrypto -lssl
+
 include($$PWD/../../common.pri)
 
 TARGET = server

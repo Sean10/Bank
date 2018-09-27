@@ -22,6 +22,37 @@ Server::Server() : count_(0)
     InitSql();
 
     std::cout << "succed init sql" << std::endl;
+
+    //SSL初库始化
+    SSL_library_init();
+    //载入所有SSL算法
+    OpenSSL_add_ssl_algorithms();
+    //载入所有错误信息
+    SSL_load_error_strings();
+    meth = (SSL_METHOD *)TLSv1_server_method();
+    ctx = SSL_CTX_new(meth);
+    if (NULL == ctx)
+        exit(1);
+    SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+    SSL_CTX_load_verify_locations(ctx, CACERT, NULL);
+    //加载证书和私钥
+    if (0 == SSL_CTX_use_certificate_file(ctx, SVRCERTF, SSL_FILETYPE_PEM))
+    {
+        ERR_print_errors_fp(stderr);
+        exit(1);
+    }
+    if (0 == SSL_CTX_use_PrivateKey_file(ctx, SVRKEYF, SSL_FILETYPE_PEM))
+    {
+        ERR_print_errors_fp(stderr);
+        exit(1);
+    }
+    if (!SSL_CTX_check_private_key(ctx))
+    {
+        printf("Private key does not match the certificate public key\n");
+        exit(1);
+    }
+    SSL_CTX_set_cipher_list(ctx, "RC4-MD5");
+    SSL_CTX_set_mode(ctx, SSL_MODE_AUTO_RETRY);
     listeningSocket_ = socket(AF_INET, SOCK_STREAM, 0);
     if (listeningSocket_ == -1)
         throw std::runtime_error("Cannot create listening socket");
@@ -70,9 +101,56 @@ Server::Server() : count_(0)
             {
                 cout << "[INFO] New come, now " << ++count_ << " connections in total" << endl;
 
+                ssl = SSL_new(ctx);
+                if (NULL == ssl)
+                    exit(1);
+                if (0 == SSL_set_fd(ssl, connection))
+                {
+                    printf("Attach to Line fail!\n");
+                    exit(1);
+                }
+                int k = SSL_accept(ssl);
+                if (0 == k)
+                {
+                    printf("%d/n", k);
+                    printf("SSL connect fail!\n");
+                    exit(1);
+                }
+                X509 *client_cert;
+                client_cert = SSL_get_peer_certificate(ssl);
+                printf("find a customer to try to connect\n");
+                if (client_cert != NULL)
+                {
+                    printf("Client certificate:\n");
+                    char *str =
+                            X509_NAME_oneline(X509_get_subject_name(client_cert), 0, 0);
+                    if (NULL == str)
+                    {
+                        printf("auth error!\n");
+                        exit(1);
+                    }
+                    printf("subject: %s\n", str);
+                    str = X509_NAME_oneline(X509_get_issuer_name(client_cert), 0, 0);
+                    if (NULL == str)
+                    {
+                        printf("certificate name is null\n");
+                        exit(1);
+                    }
+                    printf("issuer: %s\n", str);
+                    printf("connect successfully\n");
+                    X509_free(client_cert);
+                    OPENSSL_free(str);
+                }
+                else
+                {
+                    printf("can not find the customer's certificate\n");
+                    exit(1);
+                }
+
                 while(true)
                 {
-                    if (recv(connection, recvBuf, recvBufLen, 0) <= 0)
+//                    if (recv(connection, recvBuf, recvBufLen, 0) <= 0)
+                    if (SSL_read(ssl, recvBuf, recvBufLen) <= 0)
                     {
                         // 保证cout完整执行而不被其他线程打断
                         mtx.lock();
@@ -106,7 +184,8 @@ Server::Server() : count_(0)
                     char recvBuf[DEFAULT_BUFFER_LEN];
                     int recvBufLen = DEFAULT_BUFFER_LEN;
                     strcpy(recvBuf, responseStr.c_str());
-                    if (send(connection, recvBuf, recvBufLen, 0) <= 0)
+//                    if (send(connection, recvBuf, recvBufLen, 0) <= 0)
+                    if (SSL_write(ssl, recvBuf, recvBufLen) <= 0)
                     {
                         cout << "[ERROR] failed at send messager, code: " << errno << endl;
                     }
@@ -133,7 +212,7 @@ void Server::InitSql()
     UserInfo userInfo;
     OrderInfo orderInfo;
     auto field = FieldExtractor {
-                    userInfo,orderInfo};
+            userInfo,orderInfo};
     try
     {
         mapper.CreateTbl(userInfo);

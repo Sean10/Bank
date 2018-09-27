@@ -57,6 +57,10 @@ protected:
     // 连接到服务器的客户端数
     size_t count_;
 
+    SSL_METHOD *meth;
+        SSL_CTX *ctx;
+        SSL *ssl;
+
 private:
     void InitSql();
 };

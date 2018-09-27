@@ -77,6 +77,11 @@ protected:
     string uuid_;
     // 权限等级
     int privilege_;
+
+    int seed_int[100];
+    SSL *ssl;
+    SSL_METHOD *meth;
+    SSL_CTX *ctx;
 };
 
 }

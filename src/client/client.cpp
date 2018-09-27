@@ -11,6 +11,51 @@ using namespace Sean_Socket;
 Client::Client(string name)
     : username_(name)
 {
+    /* 初始化OpenSSL */
+    SSL_library_init();
+    /*加载算法库 */
+    OpenSSL_add_ssl_algorithms();
+    /*加载错误处理信息 */
+    SSL_load_error_strings();
+    /* 选择会话协议 */
+    meth = (SSL_METHOD *)TLSv1_client_method();
+    /* 创建会话环境 */
+    ctx = SSL_CTX_new(meth);
+    if (NULL == ctx)
+        exit(1);
+    /* 制定证书验证方式 */
+    SSL_CTX_set_verify(ctx, SSL_VERIFY_PEER, NULL);
+
+    /* 为SSL会话加载CA证书*/
+    SSL_CTX_load_verify_locations(ctx, CACERT, NULL);
+
+    /* 为SSL会话加载用户证书 */
+    if (0 == SSL_CTX_use_certificate_file(ctx, MYCERTF, SSL_FILETYPE_PEM))
+    {
+        ERR_print_errors_fp(stderr);
+        exit(1);
+    }
+    /* 为SSL会话加载用户私钥 */
+    if (0 == SSL_CTX_use_PrivateKey_file(ctx, MYKEYF, SSL_FILETYPE_PEM))
+    {
+        ERR_print_errors_fp(stderr);
+        exit(1);
+    }
+    /* 验证私钥和证书是否相符 */
+    if (!SSL_CTX_check_private_key(ctx))
+    {
+        printf("Private key does not match the certificate public key\n");
+        exit(1);
+    }
+    /* 设置随机数 */
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < 100; i++)
+        seed_int[i] = rand();
+    RAND_seed(seed_int, sizeof(seed_int));
+    /* 指定加密器类型 */
+    SSL_CTX_set_cipher_list(ctx, "RC4-MD5");
+    SSL_CTX_set_mode(ctx, SSL_MODE_AUTO_RETRY);
+
     std::cout << "begin..." << std::endl;
     connectSocket_ = socket(AF_INET, SOCK_STREAM, 0);
     if (-1 == connectSocket_)
@@ -64,11 +109,32 @@ std::string Client::Connect(std::string requestInfo)
         if (connect(connectSocket_, reinterpret_cast<sockaddr *>(&serverAddr_),
                     sizeof(serverAddr_))== -1)
         {
-             cout << "Unable to connect to server... " << std::to_string(2 - trys) << " trys" << endl;
-             std::this_thread::sleep_for(std::chrono::milliseconds(10));
-             continue;
+            cout << "Unable to connect to server... " << std::to_string(2 - trys) << " trys" << endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            continue;
         }
         cout << "Connect success" << endl;
+        /* 创建一个SSL套接字*/
+        ssl = SSL_new(ctx);
+        if (NULL == ssl)
+            exit(1);
+
+        /* 申请一个ssl套接字 */
+        if (0 >= SSL_set_fd(ssl, connectSocket_))
+        {
+            printf("Attach to Line fail!\n");
+            exit(1);
+        }
+        //建立SSL连接
+        int k = SSL_connect(ssl);
+        if (0 == k)
+        {
+            printf("%d\n", k);
+            printf("SSL connect fail!\n");
+            exit(1);
+        }
+        printf("connect to server\n");
+
         success = true;
         break;
     }
@@ -93,14 +159,16 @@ std::string Client::Send(std::string requestInfo)
     strcpy(sendBuf, requestInfo.c_str());
 
     // 向服务器发送数据
-    if (send( connectSocket_, sendBuf, sendBufLen, 0) == -1)
+//    if (send( connectSocket_, sendBuf, sendBufLen, 0) == -1)
+    if (SSL_write(ssl, sendBuf, sendBufLen) == -1)
     {
         close( connectSocket_);
         throw std::runtime_error("Failed at send message");
     }
     cout << "[INFO] send complete" << endl;
     // 等待接受服务器的返回信息
-    if (recv( connectSocket_, recvBuf, recvBufLen, 0) <= 0)
+//    if (recv( connectSocket_, recvBuf, recvBufLen, 0) <= 0)
+    if (SSL_read(ssl, recvBuf, recvBufLen) <= 0)
     {
         close( connectSocket_);
         throw std::runtime_error("Failed at receive message");
