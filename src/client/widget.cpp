@@ -1,7 +1,9 @@
-/*
- *  @file   widget.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 登陆注册界面类声明文件
+ * 
+ * @file widget.cpp
+ * @author your name
+ * @date 2018-09-27
  */
 #include "widget.h"
 #include "ui_widget.h"
@@ -17,6 +19,11 @@
 using Sean_Socket::Client;
 using json = nlohmann::json;
 
+/**
+ * @brief Construct a new Widget:: Widget object
+ * 
+ * @param parent 
+ */
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
@@ -36,6 +43,10 @@ Widget::Widget(QWidget *parent) :
 //    setPalette(palette);
 }
 
+/**
+ * @brief Destroy the Widget:: Widget object
+ * 登陆注册类析构函数
+ */
 Widget::~Widget()
 {
     delete ui;
@@ -48,6 +59,10 @@ void Widget::InitConnect()
 
 }
 
+/**
+ * @brief 登陆
+ * 
+ */
 void Widget::Login()
 {
     // 触发登录
@@ -110,6 +125,10 @@ void Widget::Login()
      }
 }
 
+/**
+ * @brief 注册
+ * 
+ */
 void Widget::Signup()
 {
     auto uuid = sole::uuid1().str();

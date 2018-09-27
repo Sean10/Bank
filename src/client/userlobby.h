@@ -49,16 +49,45 @@ public slots:
     void EmitUserTable();
 
 private slots:
+    /**
+     * @brief 退出
+     * 
+     */
     void LogOut();
+
+    /**
+     * @brief Set the Balance object
+     * 发送请求，获取用户当前余额，并刷新显示
+     */
     void SetBalance();
+
+    /**
+     * @brief 充值对话框
+     * 
+     */
     void DialogDeposit();
+
+    /**
+     * @brief 取款对话框
+     * 
+     */
     void DialogWithdraw();
+
+    /**
+     * @brief 转账对话框
+     * 
+     */
     void DialogTransfer();
+
+    /**
+     * @brief 修改密码对话框
+     * 
+     */
     void DialogChangePassword();
-//    void WidgetOrderTable();
 
 
 signals:
+
     void setBalance();
     void orderTable(int index);
     void userTable(int index);
@@ -69,9 +98,30 @@ private:
     DialogOrder *dialog;
     DialogPassword *dialogPassword_;
 
-
+    /**
+     * @brief 发送请求充值、取款
+     * 
+     * @param orderType 业务类型
+     * @param amount 金额
+     */
     void SendOrder(int orderType, int amount);
+
+    /**
+     * @brief 发送请求修改密码
+     * 
+     * @param orderType 业务类型
+     * @param username 修改后的用户名
+     * @param password 修改后的密码
+     */
     void SendOrder(int orderType, std::string username, std::string password);
+
+    /**
+     * @brief 发送请求转账
+     * 
+     * @param orderType 业务类型
+     * @param amount 金额
+     * @param in_account 转入账号用户名
+     */
     void SendOrder(int orderType, int amount, std::string in_account);
     void InitConnect();
     void InitUI();

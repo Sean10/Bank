@@ -1,7 +1,9 @@
-/*
- *  @file   userswidget.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 用户详情类定义文件
+ * 
+ * @file userswidget.cpp
+ * @author your name
+ * @date 2018-09-27
  */
 #include "userswidget.h"
 #include "ui_userswidget.h"
@@ -9,6 +11,12 @@
 #include "sole.hpp"
 #include <QMessageBox>
 
+/**
+ * @brief Construct a new Users Widget:: Users Widget object
+ * 
+ * @param client_ 该界面绑定的用户连接socket
+ * @param parent 父界面指针
+ */
 UsersWidget::UsersWidget(Sean_Socket::Client *client_, QWidget *parent) :
     client_(client_),
     QWidget(parent),
@@ -19,6 +27,10 @@ UsersWidget::UsersWidget(Sean_Socket::Client *client_, QWidget *parent) :
     InitConnect();
 }
 
+/**
+ * @brief Destroy the Users Widget:: Users Widget object
+ * 
+ */
 UsersWidget::~UsersWidget()
 {
     delete ui;
@@ -52,6 +64,10 @@ void UsersWidget::BackToLobby()
     emit backToLobby();
 }
 
+/**
+ * @brief 查找用户详情函数
+ * 
+ */
 void UsersWidget::Search()
 {
     std::cout << "start to search user table" << std::endl;
@@ -87,7 +103,10 @@ void UsersWidget::Search()
     std::cout << "succeed to get user table" << std::endl;
 }
 
-
+/**
+ * @brief 创建用户对话框
+ * 
+ */
 void UsersWidget::DialogCreateUser()
 {
     auto uuid = sole::uuid1().str();
@@ -102,6 +121,11 @@ void UsersWidget::DialogCreateUser()
     }
 }
 
+
+/**
+ * @brief 修改用户对话框
+ * 
+ */
 void UsersWidget::DialogModifyUser()
 {
     QModelIndex index = ui->tableView->currentIndex();
@@ -118,6 +142,10 @@ void UsersWidget::DialogModifyUser()
     }
 }
 
+/**
+ * @brief 删除用户确认框
+ * 
+ */
 void UsersWidget::DialogDeleteUser()
 {
     QModelIndex index = ui->tableView->currentIndex();
@@ -131,6 +159,12 @@ void UsersWidget::DialogDeleteUser()
     }
 }
 
+/**
+ * @brief 发送删除用户请求
+ * 
+ * @param type 业务类型
+ * @param uuid 用户唯一标识符
+ */
 void UsersWidget::SendOrderUser(int type, std::string uuid)
 {
     json sendInfo = {
@@ -148,6 +182,15 @@ void UsersWidget::SendOrderUser(int type, std::string uuid)
     Search();
 }
 
+/**
+ * @brief 发送创建/修改用户请求
+ * 
+ * @param type 
+ * @param uuid 
+ * @param username 
+ * @param password 
+ * @param privilege 
+ */
 void UsersWidget::SendOrderUser(int type, std::string uuid, std::string username, std::string password, int privilege)
 {
 //    std::string
@@ -169,7 +212,11 @@ void UsersWidget::SendOrderUser(int type, std::string uuid, std::string username
     Search();
 }
 
-
+/**
+ * @brief Get the User Table object
+ * 
+ * @return json 
+ */
 json UsersWidget::GetUserTable()
 {
     // 这里没有写权限校验

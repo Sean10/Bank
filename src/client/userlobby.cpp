@@ -79,7 +79,10 @@ UserLobby::~UserLobby()
     delete client_;
 }
 
-
+/**
+ * @brief 充值对话框
+ * 
+ */
 void UserLobby::DialogDeposit()
 {
 
@@ -92,6 +95,10 @@ void UserLobby::DialogDeposit()
     }
 }
 
+/**
+ * @brief 取款对话框
+ * 
+ */
 void UserLobby::DialogWithdraw()
 {
     bool ok;
@@ -103,6 +110,10 @@ void UserLobby::DialogWithdraw()
     }
 }
 
+/**
+ * @brief 转账对话框
+ * 
+ */
 void UserLobby::DialogTransfer()
 {
     dialog = new DialogOrder(ORDER_TRANSFER, this);
@@ -115,6 +126,10 @@ void UserLobby::DialogTransfer()
 
 }
 
+/**
+ * @brief 修改密码对话框
+ * 
+ */
 void UserLobby::DialogChangePassword()
 {
     dialogPassword_ = new DialogPassword(this);
@@ -125,6 +140,10 @@ void UserLobby::DialogChangePassword()
     }
 }
 
+/**
+ * @brief 退出
+ * 
+ */
 void UserLobby::LogOut()
 {
     // 释放所有资源
@@ -132,7 +151,12 @@ void UserLobby::LogOut()
     emit closeAll();
 }
 
-
+/**
+ * @brief 发送请求充值、取款
+ * 
+ * @param orderType 业务类型
+ * @param amount 金额
+ */
 void UserLobby::SendOrder(int orderType, int amount)
 {
     std::string orderUUID = sole::uuid1().str();
@@ -155,6 +179,13 @@ void UserLobby::SendOrder(int orderType, int amount)
 
 }
 
+/**
+ * @brief 发送请求修改密码
+ * 
+ * @param orderType 业务类型
+ * @param username 修改后的用户名
+ * @param password 修改后的密码
+ */
 void UserLobby::SendOrder(int orderType, std::string username, std::string password)
 {
     json sendInfo = {
@@ -172,6 +203,13 @@ void UserLobby::SendOrder(int orderType, std::string username, std::string passw
     };
 }
 
+/**
+ * @brief 发送请求转账
+ * 
+ * @param orderType 业务类型
+ * @param amount 金额
+ * @param in_account 转入账号用户名
+ */
 void UserLobby::SendOrder(int orderType, int amount, std::string in_account)
 {
     std::string orderUUID = sole::uuid1().str();
@@ -194,6 +232,10 @@ void UserLobby::SendOrder(int orderType, int amount, std::string in_account)
     emit setBalance();
 }
 
+/**
+ * @brief Set the Balance object
+ * 
+ */
 void UserLobby::SetBalance()
 {
     json sendInfo = {
