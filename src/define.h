@@ -1,7 +1,9 @@
-/*
- *  @file   define
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 协议定义文件
+ * 
+ * @file define.h
+ * @author your name
+ * @date 2018-10-05
  */
 #ifndef DEFINE_H
 #define DEFINE_H

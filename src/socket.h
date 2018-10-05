@@ -1,7 +1,9 @@
-/*
- *  @file   socket
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief socket头文件
+ * 
+ * @file socket.h
+ * @author your name
+ * @date 2018-10-05
  */
 #ifndef SOCKET_H
 #define SOCKET_H

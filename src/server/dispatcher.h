@@ -1,7 +1,9 @@
-/*
- *  @file   dispatcher.h
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief 路由转发声明文件
+ * 
+ * @file dispatcher.h
+ * @author your name
+ * @date 2018-10-05
  */
 #ifndef DISPATCHER_H
 #define DISPATCHER_H
@@ -15,23 +17,26 @@ class Dispatcher
 {
 public:
     Dispatcher() : state_(0) {}
-
-    // 传入SOCKET和Server的构造函数
-    // @param:
-    //      connection  与相应客户端建立的socket连接
-    //      parent      server对象指针
+    
+    /**
+     * @brief Construct a new Dispatcher object
+     * 传入SOCKET和Server的构造函数
+     * @param connection 传入SOCKET和Server的构造函数
+     * @param parent server对象指针
+     */
     Dispatcher(int &connection, Sean_Socket::Server *parent)
         : connection_(connection), parent_(parent), state_(0)
     {
         // 初始化随机种子
         srand((unsigned int)time(NULL));
     }
-
-    // 根据请求信息，分发到相应的函数处理请求
-    // @param:
-    //      requestInfo json序列化后请求信息
-    // @return:
-    //      json序列化后的返回信息
+   
+    /**
+     * @brief 根据请求信息，路由转发到相应的函数处理请求
+     * 
+     * @param requestInfo json序列化后请求信息
+     * @return std::string json序列化后的返回信息
+     */
     std::string Dispatch(json requestInfo);
 
     // 登陆处理逻辑

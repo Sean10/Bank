@@ -1,7 +1,9 @@
-/*
- *  @file   server.h
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief server类声明文件
+ * 
+ * @file server.h
+ * @author your name
+ * @date 2018-10-05
  */
 #ifndef SERVER_H
 #define SERVER_H
@@ -18,30 +20,40 @@ namespace Sean_Socket
 {
 class Server
 {
-public:
-    // 构造函数，打开监听接口等待请求
+  public:
+    /**
+     * @brief Construct a new Server object
+     * 构造函数，打开监听接口等待请求
+     */
     Server();
 
     ~Server();
 
-    // 查询用户是否在线
-    // @param:
-    //      username 需要查询的用户名
-    //      connection 与该用户名绑定的socket
-    // @return:
-    //      是否在线
+    /**
+     * @brief 查询用户是否在线
+     * 
+     * @param username 需要查询的用户名
+     * @param connection 与该用户名绑定的socket
+     * @return true 
+     * @return false 
+     */
     bool Online(std::string username, int connection);
 
-    // 将某用户从在线列表移除
-    // @param:
-    //      username 需要移除的用户名
+    /**
+     * @brief 将某用户从在线列表移除
+     * 
+     * @param username 要移除的用户名
+     */
     void Offline(std::string username);
 
-    // 获得在线用户列表
-    // @return:
-    //      装载有所有在线用户名的list
+    /**
+     * @brief Get the Online List object
+     * 获得在线用户列表
+     * @return std::list<std::string> 装载有所有在线用户名的list
+     */
     std::list<std::string> GetOnlineList();
-protected:
+
+  protected:
     // 监听客户端访问的socket
     int listeningSocket_;
 
@@ -58,14 +70,12 @@ protected:
     size_t count_;
 
     SSL_METHOD *meth;
-        SSL_CTX *ctx;
-        SSL *ssl;
+    SSL_CTX *ctx;
+    SSL *ssl;
 
-private:
+  private:
     void InitSql();
 };
-}
-
-
+} // namespace Sean_Socket
 
 #endif // SERVER_H

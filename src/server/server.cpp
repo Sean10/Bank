@@ -1,10 +1,11 @@
-/*
- *  @file   server.cpp
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief server类定义文件
+ * 
+ * @file server.cpp
+ * @author your name
+ * @date 2018-10-05
  */
 #include "server.h"
-
 #include "dispatcher.h"
 #include "../define.h"
 #include "json.hpp"
@@ -17,6 +18,10 @@
 using namespace Sean_Socket;
 using json = nlohmann::json;
 
+/**
+ * @brief Construct a new Server:: Server object
+ * 建立SSL安全连接，socket连接
+ */
 Server::Server() : count_(0)
 {
     InitSql();
@@ -207,6 +212,10 @@ Server::Server() : count_(0)
     }
 }
 
+/**
+ * @brief Destroy the Server:: Server object
+ * Server析构函数，关闭SSL, Socket连接
+ */
 Server::~Server()
 {
     shutdown(listeningSocket_, 2);
@@ -217,7 +226,10 @@ Server::~Server()
     close(listeningSocket_);
 }
 
-
+/**
+ * @brief 初始化数据库表，并插入默认账户
+ * 
+ */
 void Server::InitSql()
 {
     BOT_ORM::ORMapper mapper(DATABASE_NAME);
@@ -264,6 +276,14 @@ void Server::InitSql()
     }
 }
 
+/**
+ * @brief 船用户是否在线
+ * 通过无序哈希表存储socket连接
+ * @param username 
+ * @param connection 
+ * @return true 
+ * @return false 
+ */
 bool Server::Online(std::string username, int connection)
 {
     // emplace返回一个pair，第二个元素为是否成功插入
@@ -272,12 +292,22 @@ bool Server::Online(std::string username, int connection)
     return result.second;
 }
 
+/**
+ * @brief 将某用户从在线列表移除
+ * 
+ * @param username 
+ */
 void Server::Offline(std::string username)
 {
     // 将用户名从在线列表移除
     sockets_.erase(username);
 }
 
+/**
+ * @brief 获取在线用户列表
+ * 
+ * @return std::list<std::string> 
+ */
 std::list<std::string> Server::GetOnlineList()
 {
     std::list<std::string> onlineList;

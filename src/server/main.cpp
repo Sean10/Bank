@@ -1,7 +1,9 @@
-/*
- *  @file   main
- *  @brief  摘要
- *  Copyright (c) 2018
+/**
+ * @brief server端main函数
+ * 
+ * @file main.cpp
+ * @author your name
+ * @date 2018-10-05
  */
 
 #include <iostream>
