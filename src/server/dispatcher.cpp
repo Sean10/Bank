@@ -35,11 +35,9 @@ std::string Dispatcher::Dispatch(json requestInfo)
     switch (requestInfoBak["define"].get<int>())
     {
     case LOG_IN:
-        std::cout << "login handle" << std::endl;
         responseInfo = LoginHandle(requestInfo);
         break;
     case SIGN_UP:
-        std::cout << "signup handle" << std::endl;
         responseInfo = SignupHandle(requestInfo);
         break;
     case GET_BALANCE:
@@ -569,19 +567,46 @@ json Dispatcher::GetUserTable(json& requestInfo)
     auto field = FieldExtractor{
             userInfo};
 
-    auto result = mapper.Query(userInfo).Where(field(userInfo.username) & ('%'+requestInfo["condition"].get<std::string>()+'%')).ToList();
-    if (result.empty())
+    int condition = requestInfo["condition"].get<int>();
+    if (CONDITION_USERNAME == condition)
+    {
+        auto result = mapper.Query(userInfo).Where(field(userInfo.username) & ('%'+requestInfo["content"].get<std::string>()+'%')).ToList();
+        if (result.empty())
+        {
+            responseInfo["define"] = SERVER_ERROR;
+            return responseInfo;
+        }
+
+        responseInfo["define"] = QUERY_SUCCESS;
+        for (auto &user: result)
+        {
+            responseInfo["content"].emplace_back(UserInfoToJson(user));
+            std::cout << UserInfoToJson(user).dump() << std::endl;
+        }
+    }
+    else if (CONDITION_DATETIME == condition)
+    {
+        auto result = mapper.Query(userInfo).Where((field(userInfo.lastModifyTime) > requestInfo["timeStart"].get<long>()) && (field(userInfo.lastModifyTime) < requestInfo["timeStop"].get<long>())).ToList();
+        if (result.empty())
+        {
+            responseInfo["define"] = SERVER_ERROR;
+            return responseInfo;
+        }
+
+        responseInfo["define"] = QUERY_SUCCESS;
+        for (auto &user: result)
+        {
+            responseInfo["content"].emplace_back(UserInfoToJson(user));
+//            std::cout << UserInfoToJson(user).dump() << std::endl;
+        }
+    }
+    else
     {
         responseInfo["define"] = SERVER_ERROR;
         return responseInfo;
     }
 
-    responseInfo["define"] = QUERY_SUCCESS;
-    for (auto &user: result)
-    {
-        responseInfo["content"].emplace_back(UserInfoToJson(user));
-        std::cout << UserInfoToJson(user).dump() << std::endl;
-    }
+
     std::cout << "get order" << std::endl;
     return std::move(responseInfo);
 }

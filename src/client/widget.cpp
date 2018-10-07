@@ -36,11 +36,11 @@ Widget::Widget(QWidget *parent) :
     setFixedSize(400, 300);
     // 设置背景
     setAutoFillBackground(true);
-//    QPalette palette;
-//    QPixmap pixmap(":/background");
+    QPalette palette;
+    QPixmap pixmap(":img/background.jpg");
 
-//    palette.setBrush(QPalette::Window, QBrush(pixmap.scaled(width(), height())));
-//    setPalette(palette);
+    palette.setBrush(QPalette::Window, QBrush(pixmap.scaled(width(), height())));
+    setPalette(palette);
 }
 
 /**
@@ -87,13 +87,13 @@ void Widget::Login()
             delete client_;
             QMessageBox::information(this, "Error", QString::fromLocal8Bit("登陆失败,用户名或密码错误"));
         }
-        else if (receiveInfo["define"].get<int>() == LOG_IN_FAIL_AO)
+        else if (LOG_IN_FAIL_AO == receiveInfo["define"].get<int>())
         {
             client_->Close();
             delete client_;
             QMessageBox::information(this, "Error", QString::fromLocal8Bit("登陆失败，该用户已经在线"));
         }
-        else if (receiveInfo["define"].get<int>() == LOG_IN_SUCCESS)
+        else if (LOG_IN_SUCCESS == receiveInfo["define"].get<int>())
         {
             // 进入主界面
             client_->SetPrivilege(receiveInfo["privilege"].get<int>());
@@ -101,14 +101,14 @@ void Widget::Login()
             {
                 this->close();
                 StackWidget *stack = new StackWidget(client_);
-                 stack->show();
+                stack->show();
             }
             catch (std::exception e)
             {
                 QMessageBox::information(this, "Error", QString::fromLocal8Bit("与服务器断开连接"));
             }
         }
-        else if (receiveInfo["define"].get<int>() == SERVER_ERROR)
+        else if (SERVER_ERROR == receiveInfo["define"].get<int>())
         {
             throw std::runtime_error("Server occurs fatal error");
         }

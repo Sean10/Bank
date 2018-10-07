@@ -76,6 +76,12 @@ private slots:
      */
     void DialogDeleteUser();
 
+    /**
+     * @brief ChangeSearch
+     * @param index
+     */
+    void ChangeSearch(int index);
+
 private:
     Ui::UsersWidget *ui;
     Sean_Socket::Client *client_;

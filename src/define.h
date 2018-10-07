@@ -35,6 +35,11 @@
 #define USER_DELETE 11 // 删除用户
 #define USER_PASSWORD 12 // 修改用户密码
 
+/*-------------------*/
+
+#define CONDITION_USERNAME 20 // 用户名搜索
+#define CONDITION_DATETIME 21 // 根据最后操作时间戳检索
+
 /*--------------------返回状态------------------------*/
 
 #define LOG_IN_SUCCESS      65      // 登陆成功

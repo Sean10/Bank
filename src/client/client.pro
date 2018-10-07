@@ -44,3 +44,6 @@ FORMS += \
     dialoguser.ui \
     dialogpassword.ui
 
+RESOURCES += \
+    img.qrc
+

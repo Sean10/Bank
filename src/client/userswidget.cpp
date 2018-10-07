@@ -43,8 +43,18 @@ void UsersWidget::InitUI()
     QStringList labels = QObject::trUtf8("uuid, 用户名,密码,余额,权限, 最后操作时间").simplified().split(",");
     model_->setHorizontalHeaderLabels(labels);
 
+    ui->comboBox->setCurrentIndex(0);
+    ui->lineSearch->setVisible(true);
+    ui->dateTimeStart->setVisible(false);
+    ui->dateTimeStop->setVisible(false);
+    ui->labelStart->setVisible(false);
+    ui->labelStop->setVisible(false);
 
-
+    QDateTime *dates = new QDateTime;
+    *dates = QDateTime::currentDateTime();
+    ui->dateTimeStop->setDateTime(*dates);
+    ui->dateTimeStart->setDateTime(dates->addDays(-30));
+    delete dates;
 //    json result = GetOrderTable();
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableView->setModel(model_);
@@ -57,6 +67,7 @@ void UsersWidget::InitConnect()
     connect(ui->buttonModify, SIGNAL(clicked()), this, SLOT(DialogModifyUser()));
     connect(ui->buttonCreate, SIGNAL(clicked()), this, SLOT(DialogCreateUser()));
     connect(ui->buttonDelete, SIGNAL(clicked()), this, SLOT(DialogDeleteUser()));
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(ChangeSearch(int)));
 }
 
 void UsersWidget::BackToLobby()
@@ -112,6 +123,7 @@ void UsersWidget::DialogCreateUser()
     auto uuid = sole::uuid1().str();
 
     dialog_ = new DialogUser(this);
+    dialog_->setWindowTitle(tr("创建用户"));
     if (QDialog::Accepted == dialog_->exec())
     {
         std::string username = dialog_->GetUsername();
@@ -120,7 +132,6 @@ void UsersWidget::DialogCreateUser()
         SendOrderUser(SIGN_UP, uuid, username, password, privilege);
     }
 }
-
 
 /**
  * @brief 修改用户对话框
@@ -133,6 +144,7 @@ void UsersWidget::DialogModifyUser()
     auto uuid = item.front()->text().toStdString();
 
     dialog_ = new DialogUser(this);
+    dialog_->setWindowTitle(tr("修改用户"));
     if (QDialog::Accepted == dialog_->exec())
     {
         std::string username = dialog_->GetUsername();
@@ -212,6 +224,30 @@ void UsersWidget::SendOrderUser(int type, std::string uuid, std::string username
     Search();
 }
 
+void UsersWidget::ChangeSearch(int index)
+{
+    switch(index)
+    {
+    case 0:
+        ui->lineSearch->setVisible(true);
+        ui->dateTimeStart->setVisible(false);
+        ui->dateTimeStop->setVisible(false);
+        ui->labelStart->setVisible(false);
+        ui->labelStop->setVisible(false);
+        break;
+    case 1:
+        ui->lineSearch->setVisible(false);
+        ui->dateTimeStart->setVisible(true);
+        ui->dateTimeStop->setVisible(true);
+        ui->labelStart->setVisible(true);
+        ui->labelStop->setVisible(true);
+        break;
+    default:
+        ;
+    }
+
+}
+
 /**
  * @brief Get the User Table object
  * 
@@ -220,10 +256,38 @@ void UsersWidget::SendOrderUser(int type, std::string uuid, std::string username
 json UsersWidget::GetUserTable()
 {
     // 这里没有写权限校验
-    json sendInfo = {
-        {"define", GET_USER_TABLE},
-        {"condition", ui->lineSearch->text().toStdString()}
-    };
+    QDateTime timeStart = ui->dateTimeStart->dateTime();
+    QDateTime timeStop = ui->dateTimeStop->dateTime();
+    long timeStartUnix = timeStart.toTime_t();
+    long timeStopUnix = timeStop.toTime_t();
+    std::cout << timeStartUnix << " :" << timeStopUnix << std::endl;
+
+    json sendInfo;
+    switch(ui->comboBox->currentIndex())
+    {
+    case 0:
+        sendInfo = {
+            {"define", GET_USER_TABLE},
+            {"condition", CONDITION_USERNAME},
+            {"content", ui->lineSearch->text().toStdString()}
+        };
+        break;
+    case 1:
+        sendInfo = {
+            {"define", GET_USER_TABLE},
+            {"condition", CONDITION_DATETIME},
+            {"timeStart", timeStartUnix},
+            {"timeStop", timeStopUnix}
+        };
+        break;
+    default:
+        sendInfo = {
+            {"define", -1}
+        };
+
+    }
+
+
 
     json receiveInfo = json::parse(client_->Send(sendInfo.dump()));
 

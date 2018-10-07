@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>511</width>
-    <height>306</height>
+    <width>550</width>
+    <height>343</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,48 +16,48 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>341</width>
-     <height>221</height>
+     <x>10</x>
+     <y>40</y>
+     <width>521</width>
+     <height>291</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="buttonSearch">
+  <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>10</x>
      <y>10</y>
-     <width>113</width>
-     <height>32</height>
+     <width>521</width>
+     <height>33</height>
     </rect>
    </property>
-   <property name="text">
-    <string>搜索</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonBack">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>10</y>
-     <width>113</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>返回</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineSearch">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>10</y>
-     <width>113</width>
-     <height>21</height>
-    </rect>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>用户名</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineSearch"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="buttonSearch">
+      <property name="text">
+       <string>搜索</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="buttonBack">
+      <property name="text">
+       <string>返回</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
