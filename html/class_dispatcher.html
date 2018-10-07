@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bank: Dispatcher类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bank
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="class_dispatcher-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">Dispatcher类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ad67024bab3cebdfbc97d8867f2843ac3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#ad67024bab3cebdfbc97d8867f2843ac3">Dispatcher</a> (int &amp;connection, <a class="el" href="class_sean___socket_1_1_server.html">Sean_Socket::Server</a> *parent)</td></tr>
+<tr class="memdesc:ad67024bab3cebdfbc97d8867f2843ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_dispatcher.html">Dispatcher</a> object 传入SOCKET和Server的构造函数  <a href="#ad67024bab3cebdfbc97d8867f2843ac3">更多...</a><br /></td></tr>
+<tr class="separator:ad67024bab3cebdfbc97d8867f2843ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa88591d43129d9b1017a684e8851e2ed"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#aa88591d43129d9b1017a684e8851e2ed">Dispatch</a> (json requestInfo)</td></tr>
+<tr class="memdesc:aa88591d43129d9b1017a684e8851e2ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据请求信息，路由转发到相应的函数处理请求  <a href="#aa88591d43129d9b1017a684e8851e2ed">更多...</a><br /></td></tr>
+<tr class="separator:aa88591d43129d9b1017a684e8851e2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7343b2a5ee9f03ce697d72cd304aaa4"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#ae7343b2a5ee9f03ce697d72cd304aaa4">LoginHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:ae7343b2a5ee9f03ce697d72cd304aaa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">登录句柄 根据用户名和密码进行登录认证  <a href="#ae7343b2a5ee9f03ce697d72cd304aaa4">更多...</a><br /></td></tr>
+<tr class="separator:ae7343b2a5ee9f03ce697d72cd304aaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74fd1e352bfea3f092cf3d1a173b7638"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a74fd1e352bfea3f092cf3d1a173b7638">SignupHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:a74fd1e352bfea3f092cf3d1a173b7638"><td class="mdescLeft">&#160;</td><td class="mdescRight">注册句柄 使用UUID作为主键注册，查找用户名是否重复，成功则注册成功  <a href="#a74fd1e352bfea3f092cf3d1a173b7638">更多...</a><br /></td></tr>
+<tr class="separator:a74fd1e352bfea3f092cf3d1a173b7638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d2d4cfbb54444b09c27d45dfc51944c"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a1d2d4cfbb54444b09c27d45dfc51944c">GetUsernameBalanceHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:a1d2d4cfbb54444b09c27d45dfc51944c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取用户余额句柄 根据用户名获取指定用户余额  <a href="#a1d2d4cfbb54444b09c27d45dfc51944c">更多...</a><br /></td></tr>
+<tr class="separator:a1d2d4cfbb54444b09c27d45dfc51944c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c380079fe915c5b52230d3c5b5a4e56"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a5c380079fe915c5b52230d3c5b5a4e56">OrderDepositHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:a5c380079fe915c5b52230d3c5b5a4e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">订单充值句柄 根据传递的金额和用户名，进行充值，并根据uuid创建充值订单  <a href="#a5c380079fe915c5b52230d3c5b5a4e56">更多...</a><br /></td></tr>
+<tr class="separator:a5c380079fe915c5b52230d3c5b5a4e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23a67137f05635270e98d6d4c56c5abe"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a23a67137f05635270e98d6d4c56c5abe">OrderWithdrawHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:a23a67137f05635270e98d6d4c56c5abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">取款句柄 根据用户名进行取款  <a href="#a23a67137f05635270e98d6d4c56c5abe">更多...</a><br /></td></tr>
+<tr class="separator:a23a67137f05635270e98d6d4c56c5abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5abcde14a9dae7323575c16e5fde4f81"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a5abcde14a9dae7323575c16e5fde4f81">OrderTransferHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:a5abcde14a9dae7323575c16e5fde4f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">转账句柄 根据转出账号和转入账号用户名进行转账 执行前检测是否转出账号余额充足  <a href="#a5abcde14a9dae7323575c16e5fde4f81">更多...</a><br /></td></tr>
+<tr class="separator:a5abcde14a9dae7323575c16e5fde4f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb25406e996dd69c33e910831805de34"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#afb25406e996dd69c33e910831805de34">GetOrderTable</a> (json &amp;)</td></tr>
+<tr class="memdesc:afb25406e996dd69c33e910831805de34"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取订单列表 使用模糊搜索用户名从sqlite中查询结果  <a href="#afb25406e996dd69c33e910831805de34">更多...</a><br /></td></tr>
+<tr class="separator:afb25406e996dd69c33e910831805de34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83ec22a846464e62bb0e3551316d50b3"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a83ec22a846464e62bb0e3551316d50b3">GetUserTable</a> (json &amp;)</td></tr>
+<tr class="memdesc:a83ec22a846464e62bb0e3551316d50b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取用户订单列表 使用模糊搜索查询用户名  <a href="#a83ec22a846464e62bb0e3551316d50b3">更多...</a><br /></td></tr>
+<tr class="separator:a83ec22a846464e62bb0e3551316d50b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a212eba1346e465e10c1891e0601abc2e"><td class="memItemLeft" align="right" valign="top"><a id="a212eba1346e465e10c1891e0601abc2e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a212eba1346e465e10c1891e0601abc2e">Logout</a> ()</td></tr>
+<tr class="memdesc:a212eba1346e465e10c1891e0601abc2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">注销句柄 将用户Offline <br /></td></tr>
+<tr class="separator:a212eba1346e465e10c1891e0601abc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c86419975c970a797c1b9c9eb8cd71"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#ac8c86419975c970a797c1b9c9eb8cd71">ModifyUserHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:ac8c86419975c970a797c1b9c9eb8cd71"><td class="mdescLeft">&#160;</td><td class="mdescRight">管理员界面修改用户句柄 根据主键修改指定用户的用户名与密码  <a href="#ac8c86419975c970a797c1b9c9eb8cd71">更多...</a><br /></td></tr>
+<tr class="separator:ac8c86419975c970a797c1b9c9eb8cd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7782c328bd235f9da0cd1704c745a78c"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#a7782c328bd235f9da0cd1704c745a78c">ModifyUserPasswordHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:a7782c328bd235f9da0cd1704c745a78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">用户界面修改用户密码句柄 根据用户名检索修改用户密码  <a href="#a7782c328bd235f9da0cd1704c745a78c">更多...</a><br /></td></tr>
+<tr class="separator:a7782c328bd235f9da0cd1704c745a78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af21463eb049d72aee44a67f1fb4431ec"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dispatcher.html#af21463eb049d72aee44a67f1fb4431ec">DeleteUserHandle</a> (json &amp;)</td></tr>
+<tr class="memdesc:af21463eb049d72aee44a67f1fb4431ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">管理员删除用户句柄 根据uuid删除指定用户  <a href="#af21463eb049d72aee44a67f1fb4431ec">更多...</a><br /></td></tr>
+<tr class="separator:af21463eb049d72aee44a67f1fb4431ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e63f5dc297c4f60e1491ed945a9c53"><td class="memItemLeft" align="right" valign="top"><a id="a70e63f5dc297c4f60e1491ed945a9c53"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getState</b> ()</td></tr>
+<tr class="separator:a70e63f5dc297c4f60e1491ed945a9c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ad67024bab3cebdfbc97d8867f2843ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad67024bab3cebdfbc97d8867f2843ac3">&#9670;&nbsp;</a></span>Dispatcher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dispatcher::Dispatcher </td>
+          <td>(</td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sean___socket_1_1_server.html">Sean_Socket::Server</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="class_dispatcher.html">Dispatcher</a> object 传入SOCKET和Server的构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>传入SOCKET和Server的构造函数 </td></tr>
+    <tr><td class="paramname">parent</td><td>server对象指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="af21463eb049d72aee44a67f1fb4431ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af21463eb049d72aee44a67f1fb4431ec">&#9670;&nbsp;</a></span>DeleteUserHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::DeleteUserHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>管理员删除用户句柄 根据uuid删除指定用户 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="aa88591d43129d9b1017a684e8851e2ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa88591d43129d9b1017a684e8851e2ed">&#9670;&nbsp;</a></span>Dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Dispatcher::Dispatch </td>
+          <td>(</td>
+          <td class="paramtype">json&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据请求信息，路由转发到相应的函数处理请求 </p>
+<p>路由转发构造函数 通过define定义的协议头，区分各业务功能</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td>json序列化后请求信息 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>std::string json序列化后的返回信息</dd></dl>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>std::string </dd></dl>
+
+</div>
+</div>
+<a id="afb25406e996dd69c33e910831805de34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb25406e996dd69c33e910831805de34">&#9670;&nbsp;</a></span>GetOrderTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::GetOrderTable </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取订单列表 使用模糊搜索用户名从sqlite中查询结果 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a1d2d4cfbb54444b09c27d45dfc51944c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d2d4cfbb54444b09c27d45dfc51944c">&#9670;&nbsp;</a></span>GetUsernameBalanceHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::GetUsernameBalanceHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取用户余额句柄 根据用户名获取指定用户余额 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a83ec22a846464e62bb0e3551316d50b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83ec22a846464e62bb0e3551316d50b3">&#9670;&nbsp;</a></span>GetUserTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::GetUserTable </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取用户订单列表 使用模糊搜索查询用户名 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="ae7343b2a5ee9f03ce697d72cd304aaa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7343b2a5ee9f03ce697d72cd304aaa4">&#9670;&nbsp;</a></span>LoginHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::LoginHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>登录句柄 根据用户名和密码进行登录认证 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="ac8c86419975c970a797c1b9c9eb8cd71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c86419975c970a797c1b9c9eb8cd71">&#9670;&nbsp;</a></span>ModifyUserHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::ModifyUserHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>管理员界面修改用户句柄 根据主键修改指定用户的用户名与密码 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a7782c328bd235f9da0cd1704c745a78c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7782c328bd235f9da0cd1704c745a78c">&#9670;&nbsp;</a></span>ModifyUserPasswordHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::ModifyUserPasswordHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>用户界面修改用户密码句柄 根据用户名检索修改用户密码 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a5c380079fe915c5b52230d3c5b5a4e56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c380079fe915c5b52230d3c5b5a4e56">&#9670;&nbsp;</a></span>OrderDepositHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::OrderDepositHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>订单充值句柄 根据传递的金额和用户名，进行充值，并根据uuid创建充值订单 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a5abcde14a9dae7323575c16e5fde4f81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5abcde14a9dae7323575c16e5fde4f81">&#9670;&nbsp;</a></span>OrderTransferHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::OrderTransferHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>转账句柄 根据转出账号和转入账号用户名进行转账 执行前检测是否转出账号余额充足 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a23a67137f05635270e98d6d4c56c5abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23a67137f05635270e98d6d4c56c5abe">&#9670;&nbsp;</a></span>OrderWithdrawHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::OrderWithdrawHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取款句柄 根据用户名进行取款 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<a id="a74fd1e352bfea3f092cf3d1a173b7638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74fd1e352bfea3f092cf3d1a173b7638">&#9670;&nbsp;</a></span>SignupHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">json Dispatcher::SignupHandle </td>
+          <td>(</td>
+          <td class="paramtype">json &amp;&#160;</td>
+          <td class="paramname"><em>requestInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>注册句柄 使用UUID作为主键注册，查找用户名是否重复，成功则注册成功 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestInfo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>json </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/server/<a class="el" href="dispatcher_8h_source.html">dispatcher.h</a></li>
+<li>src/server/<a class="el" href="dispatcher_8cpp.html">dispatcher.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

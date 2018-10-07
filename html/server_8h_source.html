@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bank: src/server/server.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bank
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_075bb3ff235063c77951cd176d15a741.html">server</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">server.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="server_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef SERVER_H</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define SERVER_H</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;../socket.h&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../model/userinfo.h&quot;</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../model/orderinfo.h&quot;</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_sean___socket.html">Sean_Socket</a></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_sean___socket_1_1_server.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_sean___socket_1_1_server.html">Server</a></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keyword">public</span>:</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_sean___socket_1_1_server.html#ad5ec9462b520e59f7ea831e157ee5e59">Server</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_sean___socket_1_1_server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6">~Server</a>();</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_sean___socket_1_1_server.html#ad892e7ecbf69755f9cd5e7092198fa0d">Online</a>(std::string username, <span class="keywordtype">int</span> connection);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_sean___socket_1_1_server.html#a5eb1e78b42c45772f7bda0d4bb7f35c1">Offline</a>(std::string username);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::list&lt;std::string&gt; <a class="code" href="class_sean___socket_1_1_server.html#a5d1131d052f104cb414191fee4df5873">GetOnlineList</a>();</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">protected</span>:</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// 监听客户端访问的socket</span></div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> listeningSocket_;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// 地址信息</span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    sockaddr_in serverAddr_;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// 持有与各个客户端保持通信的线程</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    std::vector&lt;std::thread&gt; socketThreads_;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// 持有用户名相对应的socket链接</span></div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::unordered_map&lt;std::string, int&gt; sockets_;</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// 连接到服务器的客户端数</span></div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">size_t</span> count_;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    SSL_METHOD *meth;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    SSL_CTX *ctx;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    SSL *ssl;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">private</span>:</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> InitSql();</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// namespace Sean_Socket</span></div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // SERVER_H</span></div><div class="ttc" id="class_sean___socket_1_1_server_html"><div class="ttname"><a href="class_sean___socket_1_1_server.html">Sean_Socket::Server</a></div><div class="ttdef"><b>Definition:</b> server.h:21</div></div>
+<div class="ttc" id="class_sean___socket_1_1_server_html_a4b3aa2579cb1c8cd1d069582c14d0fa6"><div class="ttname"><a href="class_sean___socket_1_1_server.html#a4b3aa2579cb1c8cd1d069582c14d0fa6">Sean_Socket::Server::~Server</a></div><div class="ttdeci">~Server()</div><div class="ttdoc">Destroy the Server:: Server object Server析构函数，关闭SSL, Socket连接 </div><div class="ttdef"><b>Definition:</b> server.cpp:219</div></div>
+<div class="ttc" id="class_sean___socket_1_1_server_html_a5eb1e78b42c45772f7bda0d4bb7f35c1"><div class="ttname"><a href="class_sean___socket_1_1_server.html#a5eb1e78b42c45772f7bda0d4bb7f35c1">Sean_Socket::Server::Offline</a></div><div class="ttdeci">void Offline(std::string username)</div><div class="ttdoc">将某用户从在线列表移除 </div><div class="ttdef"><b>Definition:</b> server.cpp:300</div></div>
+<div class="ttc" id="class_sean___socket_1_1_server_html_ad892e7ecbf69755f9cd5e7092198fa0d"><div class="ttname"><a href="class_sean___socket_1_1_server.html#ad892e7ecbf69755f9cd5e7092198fa0d">Sean_Socket::Server::Online</a></div><div class="ttdeci">bool Online(std::string username, int connection)</div><div class="ttdoc">查询用户是否在线 </div><div class="ttdef"><b>Definition:</b> server.cpp:287</div></div>
+<div class="ttc" id="namespace_sean___socket_html"><div class="ttname"><a href="namespace_sean___socket.html">Sean_Socket</a></div><div class="ttdoc">个人自定义Socket命名空间 </div><div class="ttdef"><b>Definition:</b> client.h:18</div></div>
+<div class="ttc" id="class_sean___socket_1_1_server_html_a5d1131d052f104cb414191fee4df5873"><div class="ttname"><a href="class_sean___socket_1_1_server.html#a5d1131d052f104cb414191fee4df5873">Sean_Socket::Server::GetOnlineList</a></div><div class="ttdeci">std::list&lt; std::string &gt; GetOnlineList()</div><div class="ttdoc">Get the Online List object 获得在线用户列表 </div><div class="ttdef"><b>Definition:</b> server.cpp:311</div></div>
+<div class="ttc" id="class_sean___socket_1_1_server_html_ad5ec9462b520e59f7ea831e157ee5e59"><div class="ttname"><a href="class_sean___socket_1_1_server.html#ad5ec9462b520e59f7ea831e157ee5e59">Sean_Socket::Server::Server</a></div><div class="ttdeci">Server()</div><div class="ttdoc">Construct a new Server object 构造函数，打开监听接口等待请求 </div><div class="ttdef"><b>Definition:</b> server.cpp:25</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

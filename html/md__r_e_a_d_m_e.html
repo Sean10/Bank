@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bank: 环境依赖</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bank
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">环境依赖 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h2>client</h2>
+<ul>
+<li>Qt 5.8</li>
+<li>openSSL 1.0.2o_1</li>
+<li>C++ 14 support</li>
+</ul>
+<h2>server</h2>
+<ul>
+<li>C++ 14 support</li>
+<li>openSSL 1.0.2o_1</li>
+<li>sqlite3</li>
+</ul>
+<h1>特性</h1>
+<ul>
+<li>使用C++ 14编写</li>
+<li>使用JSON提高协议的可扩展性</li>
+<li>使用ORM_LITE提高数据库的操作性</li>
+</ul>
+<h1>架构</h1>
+<div class="image">
+<img src="img/architecture.png"/>
+</div>
+<h1>流程图</h1>
+<h2>用户流程图</h2>
+<div class="image">
+<img src="img/flow.png"/>
+</div>
+<h2>管理员流程图</h2>
+<div class="image">
+<img src="img/adminFlow.png"/>
+</div>
+<h1>数据结构</h1>
+<h2>model</h2>
+<p>使用到的两个model类，并存入sqlite数据库中</p>
+<h3>UserModel</h3>
+<ul>
+<li>std::string uuid;</li>
+<li>std::string username;</li>
+<li>std::string password;</li>
+<li>int balance;</li>
+<li>int privilege;</li>
+<li>long lastModifyTime;</li>
+</ul>
+<h3>OrderModel</h3>
+<ul>
+<li>std::string uuid;</li>
+<li>int type;</li>
+<li>int amount;</li>
+<li>std::string out_account;</li>
+<li>std::string in_account;</li>
+<li>long record_time;</li>
+</ul>
+<h2>client</h2>
+<ul>
+<li>main: 程序入口</li>
+<li>Client: 控制客户端socket，并进行SSL连接</li>
+<li>Widget: 登录界面UI</li>
+<li>StackWidget: 控制UI界面切换</li>
+<li>UserLobby: 主界面UI</li>
+<li>DetailWidget: 订单查询界面UI</li>
+<li>UsersWidget: 用户管理界面UI</li>
+<li>DialogUser: 用户创建、修改对话框UI</li>
+<li>DialogPassword: 普通用户修改密码对话框UI</li>
+<li>DialogOrder: 转账对话框UI</li>
+</ul>
+<h2>server</h2>
+<ul>
+<li>main: 程序入口</li>
+<li>Server: 控制服务端socket，并进行SSL连接<ul>
+<li>int listeningSocket_; 监听客户端访问的socket</li>
+<li>sockaddr_in serverAddr_; 地址信息</li>
+<li>std::vector&lt;std::thread&gt; socketThreads_; 持有与各个客户端保持通信的线程</li>
+<li>std::unordered_map&lt;std::string, int&gt; sockets_; 持有用户名相对应的socket链接</li>
+<li>size_t count_; 连接到服务器的客户端数</li>
+<li>SSL 使用<ul>
+<li>SSL_METHOD *meth;</li>
+<li>SSL_CTX *ctx;</li>
+<li>SSL *ssl;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Dispatcher: 控制服务端路由转发后的业务逻辑<ul>
+<li>int connection_; 与dispatcher绑定的socket连接</li>
+<li>std::string username_; 与socket连接绑定的用户名</li>
+<li>Sean_Socket::Server *parent_; server指针，以访问server维护的在线列表</li>
+</ul>
+</li>
+</ul>
+<p>具体函数详见doxygen文档，即doc目录下</p>
+<h1>结果验证</h1>
+<h2>登录注册界面</h2>
+<div class="image">
+<img src="img/example/login.png"/>
+</div>
+<p>登录</p>
+<div class="image">
+<img src="img/example/signup.png"/>
+</div>
+<p>注册用户，注册用户权限为普通用户。</p>
+<h2>主界面</h2>
+<h3>管理员主界面</h3>
+<div class="image">
+<img src="img/example/lobby.png"/>
+</div>
+<h3>用户主界面</h3>
+<div class="image">
+<img src="img/example/userLobby.png"/>
+</div>
+<h3>用户修改密码</h3>
+<div class="image">
+<img src="img/example/userChangePassword.png"/>
+</div>
+<h2>业务功能</h2>
+<h3>充值</h3>
+<div class="image">
+<img src="img/example/deposit.png"/>
+</div>
+<h3>取款</h3>
+<div class="image">
+<img src="img/example/withdraw.png"/>
+</div>
+<h3>转账</h3>
+<div class="image">
+<img src="img/example/transfer.png"/>
+</div>
+<h2>管理员功能</h2>
+<h3>用户查询</h3>
+<h4>所有用户</h4>
+<div class="image">
+<img src="img/example/allUser.png"/>
+</div>
+<h4>模糊查询</h4>
+<div class="image">
+<img src="img/example/userSearch.png"/>
+</div>
+<p>根据用户名进行模糊搜索，查询用户信息</p>
+<h4>批量查询</h4>
+<div class="image">
+<img src="img/example/dateSearch.png"/>
+</div>
+<p>根据最后操作时间进行搜索，查询用户信息</p>
+<h3>管理员操作用户</h3>
+<h4>创建新用户/新管理员账户</h4>
+<div class="image">
+<img src="img/example/createUser.png"/>
+</div>
+<h4>修改用户名或密码</h4>
+<div class="image">
+<img src="img/example/modifyUser.png"/>
+</div>
+<h4>删除用户</h4>
+<div class="image">
+<img src="img/example/deleteUser.png"/>
+</div>
+<h3>订单查询</h3>
+<div class="image">
+<img src="img/example/orderSearch.png"/>
+</div>
+<p>根据用户名进行模糊搜索，查询订单信息 </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

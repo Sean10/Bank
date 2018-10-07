@@ -72,7 +72,7 @@ public:
     int getState() { return state_; }
 
 private:
-    // 代表用户处于什么状态，如在线空闲或对战
+    // 代表用户处于什么状态
     int state_;
 
     // 将OrderInfo Object转为json格式

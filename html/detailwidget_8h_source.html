@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bank: src/client/detailwidget.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bank
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6908ff505388a07996d238c763adbdab.html">client</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">detailwidget.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="detailwidget_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef DETAILWIDGET_H</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define DETAILWIDGET_H</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//#include &quot;tablemodel.h&quot;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QStandardItemModel&gt;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="client_8h.html">client.h</a>&quot;</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;json.hpp&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> json = nlohmann::json;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="namespace_ui.html">   23</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a> {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">class </span><a class="code" href="class_detail_widget.html">DetailWidget</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_detail_widget.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_detail_widget.html">DetailWidget</a> : <span class="keyword">public</span> QWidget</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    Q_OBJECT</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_detail_widget.html#a742f2809fa8719434e78f33fc0ed1c0c">DetailWidget</a>(<a class="code" href="class_sean___socket_1_1_client.html">Sean_Socket::Client</a> *client_, QWidget *parent = 0);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_detail_widget.html#a9714a19e74b40d7c229c2aa8be190cf4">~DetailWidget</a>();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    json <a class="code" href="class_detail_widget.html#a5ea73a27fab3d973ffa696881aaea996">GetOrderTable</a>();</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;signals:</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_detail_widget.html#afd604ae54e59a1b05c17cd95b6e7a223">backToLobby</a>();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span> slots:</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_detail_widget.html#aa9b289e193aab99111d6a60715b7ad4f">BackToLobby</a>();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">private</span> slots:</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> Search();</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// ui类实例</span></div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Ui::DetailWidget *ui;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// 该界面绑定的client socket</span></div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="class_sean___socket_1_1_client.html">Sean_Socket::Client</a> *client_;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// 订单详情数据模型</span></div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    QStandardItemModel *model_;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> InitUI();</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> InitConnect();</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif // DETAILWIDGET_H</span></div><div class="ttc" id="class_detail_widget_html_a9714a19e74b40d7c229c2aa8be190cf4"><div class="ttname"><a href="class_detail_widget.html#a9714a19e74b40d7c229c2aa8be190cf4">DetailWidget::~DetailWidget</a></div><div class="ttdeci">~DetailWidget()</div><div class="ttdoc">Destroy the Detail Widget object 析构订单详情界面类 </div><div class="ttdef"><b>Definition:</b> detailwidget.cpp:36</div></div>
+<div class="ttc" id="namespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdoc">Ui命名空间 </div><div class="ttdef"><b>Definition:</b> detailwidget.h:23</div></div>
+<div class="ttc" id="class_detail_widget_html_aa9b289e193aab99111d6a60715b7ad4f"><div class="ttname"><a href="class_detail_widget.html#aa9b289e193aab99111d6a60715b7ad4f">DetailWidget::BackToLobby</a></div><div class="ttdeci">void BackToLobby()</div><div class="ttdoc">回到主界面函数 发送回到主界面信号，从而在界面管理类中进行切换 </div><div class="ttdef"><b>Definition:</b> detailwidget.cpp:70</div></div>
+<div class="ttc" id="class_detail_widget_html"><div class="ttname"><a href="class_detail_widget.html">DetailWidget</a></div><div class="ttdoc">订单详情界面类 订单详情 </div><div class="ttdef"><b>Definition:</b> detailwidget.h:31</div></div>
+<div class="ttc" id="class_detail_widget_html_afd604ae54e59a1b05c17cd95b6e7a223"><div class="ttname"><a href="class_detail_widget.html#afd604ae54e59a1b05c17cd95b6e7a223">DetailWidget::backToLobby</a></div><div class="ttdeci">void backToLobby()</div><div class="ttdoc">回到主界面信号 </div></div>
+<div class="ttc" id="class_sean___socket_1_1_client_html"><div class="ttname"><a href="class_sean___socket_1_1_client.html">Sean_Socket::Client</a></div><div class="ttdoc">自定义Socket类 </div><div class="ttdef"><b>Definition:</b> client.h:24</div></div>
+<div class="ttc" id="client_8h_html"><div class="ttname"><a href="client_8h.html">client.h</a></div><div class="ttdoc">client socket连接类文件 </div></div>
+<div class="ttc" id="class_detail_widget_html_a5ea73a27fab3d973ffa696881aaea996"><div class="ttname"><a href="class_detail_widget.html#a5ea73a27fab3d973ffa696881aaea996">DetailWidget::GetOrderTable</a></div><div class="ttdeci">json GetOrderTable()</div><div class="ttdoc">Get the Order Table object 发送请求，取得订单详情json格式数据 </div><div class="ttdef"><b>Definition:</b> detailwidget.cpp:115</div></div>
+<div class="ttc" id="class_detail_widget_html_a742f2809fa8719434e78f33fc0ed1c0c"><div class="ttname"><a href="class_detail_widget.html#a742f2809fa8719434e78f33fc0ed1c0c">DetailWidget::DetailWidget</a></div><div class="ttdeci">DetailWidget(Sean_Socket::Client *client_, QWidget *parent=0)</div><div class="ttdoc">Construct a new Detail Widget object 构造一个订单详情界面类 </div><div class="ttdef"><b>Definition:</b> detailwidget.cpp:22</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

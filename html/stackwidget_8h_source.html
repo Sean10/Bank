@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bank: src/client/stackwidget.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bank
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_6908ff505388a07996d238c763adbdab.html">client</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">stackwidget.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="stackwidget_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef STACKWIDGET_H</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define STACKWIDGET_H</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QStackedLayout&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="client_8h.html">client.h</a>&quot;</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="userlobby_8h.html">userlobby.h</a>&quot;</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="detailwidget_8h.html">detailwidget.h</a>&quot;</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="userswidget_8h.html">userswidget.h</a>&quot;</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">class </span><a class="code" href="class_stack_widget.html">StackWidget</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_stack_widget.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_stack_widget.html">StackWidget</a> : <span class="keyword">public</span> QWidget</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    Q_OBJECT</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_stack_widget.html#aea8ddbf19d50b7fe8285d3d2eddcfd8d">StackWidget</a>(<a class="code" href="class_sean___socket_1_1_client.html">Sean_Socket::Client</a> *client, QWidget *parent = 0);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_stack_widget.html#a6597aa3c6c1530f0846060d867c4e041">~StackWidget</a>();</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span> slots:</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_stack_widget.html#aafe7eb85f054d8dd5b506ee06b10a9b4">SetCurrentIndex</a>(<span class="keywordtype">int</span> index);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_stack_widget.html#aa8ee452a769df29201517d3417bc0c18">BackToLobby</a>();</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> InitUi();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> InitConnect();</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// 该widget的ui界面指针</span></div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    Ui::StackWidget *ui;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// 与服务器连接的socket指针</span></div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="class_sean___socket_1_1_client.html">Sean_Socket::Client</a> *client_;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// 切换视图</span></div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    QStackedLayout *stackLayout_;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// 各个分视图</span></div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="class_user_lobby.html">UserLobby</a> *userLobby_;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_detail_widget.html">DetailWidget</a> *widgetOrderTable_;</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_users_widget.html">UsersWidget</a> *widgetUsersTable_;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif // STACKWIDGET_H</span></div><div class="ttc" id="namespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdoc">Ui命名空间 </div><div class="ttdef"><b>Definition:</b> detailwidget.h:23</div></div>
+<div class="ttc" id="class_stack_widget_html_a6597aa3c6c1530f0846060d867c4e041"><div class="ttname"><a href="class_stack_widget.html#a6597aa3c6c1530f0846060d867c4e041">StackWidget::~StackWidget</a></div><div class="ttdeci">~StackWidget()</div><div class="ttdoc">Destroy the Stack Widget object 界面切换管理类析构函数，释放各界面资源 </div><div class="ttdef"><b>Definition:</b> stackwidget.cpp:33</div></div>
+<div class="ttc" id="class_stack_widget_html_aea8ddbf19d50b7fe8285d3d2eddcfd8d"><div class="ttname"><a href="class_stack_widget.html#aea8ddbf19d50b7fe8285d3d2eddcfd8d">StackWidget::StackWidget</a></div><div class="ttdeci">StackWidget(Sean_Socket::Client *client, QWidget *parent=0)</div><div class="ttdoc">Construct a new Stack Widget object 界面切换管理类构造函数 </div><div class="ttdef"><b>Definition:</b> stackwidget.cpp:17</div></div>
+<div class="ttc" id="class_user_lobby_html"><div class="ttname"><a href="class_user_lobby.html">UserLobby</a></div><div class="ttdoc">用户主界面类 </div><div class="ttdef"><b>Definition:</b> userlobby.h:28</div></div>
+<div class="ttc" id="class_detail_widget_html"><div class="ttname"><a href="class_detail_widget.html">DetailWidget</a></div><div class="ttdoc">订单详情界面类 订单详情 </div><div class="ttdef"><b>Definition:</b> detailwidget.h:31</div></div>
+<div class="ttc" id="class_sean___socket_1_1_client_html"><div class="ttname"><a href="class_sean___socket_1_1_client.html">Sean_Socket::Client</a></div><div class="ttdoc">自定义Socket类 </div><div class="ttdef"><b>Definition:</b> client.h:24</div></div>
+<div class="ttc" id="detailwidget_8h_html"><div class="ttname"><a href="detailwidget_8h.html">detailwidget.h</a></div><div class="ttdoc">订单详情界面类声明文件 </div></div>
+<div class="ttc" id="class_users_widget_html"><div class="ttname"><a href="class_users_widget.html">UsersWidget</a></div><div class="ttdoc">用户详情类 增删改查用户 </div><div class="ttdef"><b>Definition:</b> userswidget.h:31</div></div>
+<div class="ttc" id="userswidget_8h_html"><div class="ttname"><a href="userswidget_8h.html">userswidget.h</a></div><div class="ttdoc">用户详情类声明文件 </div></div>
+<div class="ttc" id="userlobby_8h_html"><div class="ttname"><a href="userlobby_8h.html">userlobby.h</a></div><div class="ttdoc">用户主界面类声明文件 </div></div>
+<div class="ttc" id="class_stack_widget_html_aa8ee452a769df29201517d3417bc0c18"><div class="ttname"><a href="class_stack_widget.html#aa8ee452a769df29201517d3417bc0c18">StackWidget::BackToLobby</a></div><div class="ttdeci">void BackToLobby()</div><div class="ttdoc">返回到主界面 </div><div class="ttdef"><b>Definition:</b> stackwidget.cpp:86</div></div>
+<div class="ttc" id="class_stack_widget_html_aafe7eb85f054d8dd5b506ee06b10a9b4"><div class="ttname"><a href="class_stack_widget.html#aafe7eb85f054d8dd5b506ee06b10a9b4">StackWidget::SetCurrentIndex</a></div><div class="ttdeci">void SetCurrentIndex(int index)</div><div class="ttdoc">Set the Current Index object 设置当前显示的视图 </div><div class="ttdef"><b>Definition:</b> stackwidget.cpp:77</div></div>
+<div class="ttc" id="client_8h_html"><div class="ttname"><a href="client_8h.html">client.h</a></div><div class="ttdoc">client socket连接类文件 </div></div>
+<div class="ttc" id="class_stack_widget_html"><div class="ttname"><a href="class_stack_widget.html">StackWidget</a></div><div class="ttdoc">界面切换管理类 管理多个视图的切换 </div><div class="ttdef"><b>Definition:</b> stackwidget.h:31</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

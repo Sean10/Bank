@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bank: BOT_ORM::ORMapper类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Bank
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>BOT_ORM</b></li><li class="navelem"><a class="el" href="class_b_o_t___o_r_m_1_1_o_r_mapper.html">ORMapper</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-static-methods">静态 Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="class_b_o_t___o_r_m_1_1_o_r_mapper-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">BOT_ORM::ORMapper类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac555b981f92b4438c8d2f55602af675c"><td class="memItemLeft" align="right" valign="top"><a id="ac555b981f92b4438c8d2f55602af675c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ORMapper</b> (const std::string &amp;connectionString)</td></tr>
+<tr class="separator:ac555b981f92b4438c8d2f55602af675c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca088db486761ff10f6937a9f2dab8b7"><td class="memTemplParams" colspan="2"><a id="aca088db486761ff10f6937a9f2dab8b7"></a>
+template&lt;typename Fn &gt; </td></tr>
+<tr class="memitem:aca088db486761ff10f6937a9f2dab8b7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Transaction</b> (Fn fn)</td></tr>
+<tr class="separator:aca088db486761ff10f6937a9f2dab8b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe014ecd3fb153b35d33e5c0305eff0a"><td class="memTemplParams" colspan="2"><a id="afe014ecd3fb153b35d33e5c0305eff0a"></a>
+template&lt;typename C , typename... Args&gt; </td></tr>
+<tr class="memitem:afe014ecd3fb153b35d33e5c0305eff0a"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>CreateTbl</b> (const C &amp;, const Args &amp;...)</td></tr>
+<tr class="separator:afe014ecd3fb153b35d33e5c0305eff0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aded1fc32799925f29e12335d84b0e8e5"><td class="memTemplParams" colspan="2"><a id="aded1fc32799925f29e12335d84b0e8e5"></a>
+template&lt;typename C , typename... Args&gt; </td></tr>
+<tr class="memitem:aded1fc32799925f29e12335d84b0e8e5"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>CreateTbl</b> (const C &amp;entity, const Args &amp;... constraints)</td></tr>
+<tr class="separator:aded1fc32799925f29e12335d84b0e8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a9e76b4d59b86eae12a5e9a6eac720"><td class="memTemplParams" colspan="2"><a id="a11a9e76b4d59b86eae12a5e9a6eac720"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a11a9e76b4d59b86eae12a5e9a6eac720"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>DropTbl</b> (const C &amp;)</td></tr>
+<tr class="separator:a11a9e76b4d59b86eae12a5e9a6eac720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af89b857d045ececbc29a48af6dd776de"><td class="memTemplParams" colspan="2"><a id="af89b857d045ececbc29a48af6dd776de"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:af89b857d045ececbc29a48af6dd776de"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>DropTbl</b> (const C &amp;entity)</td></tr>
+<tr class="separator:af89b857d045ececbc29a48af6dd776de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a138ee84fa021db9250f467066b4fc605"><td class="memTemplParams" colspan="2"><a id="a138ee84fa021db9250f467066b4fc605"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a138ee84fa021db9250f467066b4fc605"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Insert</b> (const C &amp;, bool=true)</td></tr>
+<tr class="separator:a138ee84fa021db9250f467066b4fc605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d37f3879ee5146c5f6fa6c9d21c1282"><td class="memTemplParams" colspan="2"><a id="a8d37f3879ee5146c5f6fa6c9d21c1282"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a8d37f3879ee5146c5f6fa6c9d21c1282"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Insert</b> (const C &amp;entity, bool withId=true)</td></tr>
+<tr class="separator:a8d37f3879ee5146c5f6fa6c9d21c1282"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4efc0fe04a5a082786c4f95e8ac9909"><td class="memTemplParams" colspan="2"><a id="ae4efc0fe04a5a082786c4f95e8ac9909"></a>
+template&lt;typename In , typename C  = typename In::value_type&gt; </td></tr>
+<tr class="memitem:ae4efc0fe04a5a082786c4f95e8ac9909"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>InsertRange</b> (const In &amp;, bool=true)</td></tr>
+<tr class="separator:ae4efc0fe04a5a082786c4f95e8ac9909"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f3033f45cfb735f65ca84ebff2ec83"><td class="memTemplParams" colspan="2"><a id="a42f3033f45cfb735f65ca84ebff2ec83"></a>
+template&lt;typename In , typename C  = typename In::value_type&gt; </td></tr>
+<tr class="memitem:a42f3033f45cfb735f65ca84ebff2ec83"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>InsertRange</b> (const In &amp;entities, bool withId=true)</td></tr>
+<tr class="separator:a42f3033f45cfb735f65ca84ebff2ec83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac711ad288bafba292972343a6012804d"><td class="memTemplParams" colspan="2"><a id="ac711ad288bafba292972343a6012804d"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:ac711ad288bafba292972343a6012804d"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Update</b> (const C &amp;)</td></tr>
+<tr class="separator:ac711ad288bafba292972343a6012804d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803dd49d185d08715780e75d07cbeed1"><td class="memTemplParams" colspan="2"><a id="a803dd49d185d08715780e75d07cbeed1"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a803dd49d185d08715780e75d07cbeed1"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Update</b> (const C &amp;entity)</td></tr>
+<tr class="separator:a803dd49d185d08715780e75d07cbeed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8113e3b1befa5d9caf410aec649fb96"><td class="memTemplParams" colspan="2"><a id="aa8113e3b1befa5d9caf410aec649fb96"></a>
+template&lt;typename In , typename C  = typename In::value_type&gt; </td></tr>
+<tr class="memitem:aa8113e3b1befa5d9caf410aec649fb96"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>UpdateRange</b> (const In &amp;)</td></tr>
+<tr class="separator:aa8113e3b1befa5d9caf410aec649fb96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9758d97606b0e60d741ec9e378dcf129"><td class="memTemplParams" colspan="2"><a id="a9758d97606b0e60d741ec9e378dcf129"></a>
+template&lt;typename In , typename C  = typename In::value_type&gt; </td></tr>
+<tr class="memitem:a9758d97606b0e60d741ec9e378dcf129"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>UpdateRange</b> (const In &amp;entities)</td></tr>
+<tr class="separator:a9758d97606b0e60d741ec9e378dcf129"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6192497b0848cd7231512594e050a73"><td class="memTemplParams" colspan="2"><a id="af6192497b0848cd7231512594e050a73"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:af6192497b0848cd7231512594e050a73"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Update</b> (const C &amp;, const <a class="el" href="struct_b_o_t___o_r_m_1_1_expression_1_1_set_expr.html">Expression::SetExpr</a> &amp;, const <a class="el" href="struct_b_o_t___o_r_m_1_1_expression_1_1_expr.html">Expression::Expr</a> &amp;)</td></tr>
+<tr class="separator:af6192497b0848cd7231512594e050a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c8b64161b87db6e2ac3205d8f9db57"><td class="memTemplParams" colspan="2"><a id="ac1c8b64161b87db6e2ac3205d8f9db57"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:ac1c8b64161b87db6e2ac3205d8f9db57"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Update</b> (const C &amp;entity, const <a class="el" href="struct_b_o_t___o_r_m_1_1_expression_1_1_set_expr.html">Expression::SetExpr</a> &amp;setExpr, const <a class="el" href="struct_b_o_t___o_r_m_1_1_expression_1_1_expr.html">Expression::Expr</a> &amp;whereExpr)</td></tr>
+<tr class="separator:ac1c8b64161b87db6e2ac3205d8f9db57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ccae94692e1c2c94f410a6ac4735082"><td class="memTemplParams" colspan="2"><a id="a7ccae94692e1c2c94f410a6ac4735082"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a7ccae94692e1c2c94f410a6ac4735082"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Delete</b> (const C &amp;)</td></tr>
+<tr class="separator:a7ccae94692e1c2c94f410a6ac4735082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5039e5f36d52cf87867176e8d7dfea"><td class="memTemplParams" colspan="2"><a id="a6a5039e5f36d52cf87867176e8d7dfea"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a6a5039e5f36d52cf87867176e8d7dfea"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Delete</b> (const C &amp;entity)</td></tr>
+<tr class="separator:a6a5039e5f36d52cf87867176e8d7dfea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434972375935bc46dd092e4eb323b336"><td class="memTemplParams" colspan="2"><a id="a434972375935bc46dd092e4eb323b336"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a434972375935bc46dd092e4eb323b336"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Delete</b> (const C &amp;, const <a class="el" href="struct_b_o_t___o_r_m_1_1_expression_1_1_expr.html">Expression::Expr</a> &amp;)</td></tr>
+<tr class="separator:a434972375935bc46dd092e4eb323b336"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c2b95617b1e45a7db3e89d7b7041c1"><td class="memTemplParams" colspan="2"><a id="af7c2b95617b1e45a7db3e89d7b7041c1"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:af7c2b95617b1e45a7db3e89d7b7041c1"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Delete</b> (const C &amp;entity, const <a class="el" href="struct_b_o_t___o_r_m_1_1_expression_1_1_expr.html">Expression::Expr</a> &amp;whereExpr)</td></tr>
+<tr class="separator:af7c2b95617b1e45a7db3e89d7b7041c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7de99ff171039b80d7663ea4ec58a3"><td class="memTemplParams" colspan="2"><a id="a4c7de99ff171039b80d7663ea4ec58a3"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:a4c7de99ff171039b80d7663ea4ec58a3"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value, <a class="el" href="class_b_o_t___o_r_m_1_1_queryable.html">Queryable</a>&lt; C &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Query</b> (C)</td></tr>
+<tr class="separator:a4c7de99ff171039b80d7663ea4ec58a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3cea33ee798d266fc3ba72a841b35aa"><td class="memTemplParams" colspan="2"><a id="ab3cea33ee798d266fc3ba72a841b35aa"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:ab3cea33ee798d266fc3ba72a841b35aa"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_injection_helper_1_1_has_injected.html">HasInjected</a>&lt; C &gt;::value, <a class="el" href="class_b_o_t___o_r_m_1_1_queryable.html">Queryable</a>&lt; C &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Query</b> (C queryHelper)</td></tr>
+<tr class="separator:ab3cea33ee798d266fc3ba72a841b35aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
+静态 Protected 成员函数</h2></td></tr>
+<tr class="memitem:aa200cb494a730e3351bce3a9fadd3a10"><td class="memItemLeft" align="right" valign="top"><a id="aa200cb494a730e3351bce3a9fadd3a10"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>_GetConstraints</b> (std::string &amp;, std::unordered_map&lt; std::string, std::string &gt; &amp;)</td></tr>
+<tr class="separator:aa200cb494a730e3351bce3a9fadd3a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec64b86e1705d6f77dd6bf42dc1b671"><td class="memTemplParams" colspan="2"><a id="a8ec64b86e1705d6f77dd6bf42dc1b671"></a>
+template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a8ec64b86e1705d6f77dd6bf42dc1b671"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>_GetConstraints</b> (std::string &amp;tableFixes, std::unordered_map&lt; std::string, std::string &gt; &amp;fieldFixes, const <a class="el" href="class_b_o_t___o_r_m_1_1_constraint.html">Constraint</a> &amp;constraint, const Args &amp;... args)</td></tr>
+<tr class="separator:a8ec64b86e1705d6f77dd6bf42dc1b671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8a23b244342edd5c5e4f0ef5d90eb4f"><td class="memTemplParams" colspan="2"><a id="ab8a23b244342edd5c5e4f0ef5d90eb4f"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:ab8a23b244342edd5c5e4f0ef5d90eb4f"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>_GetInsert</b> (std::ostream &amp;os, const C &amp;entity, bool withId)</td></tr>
+<tr class="separator:ab8a23b244342edd5c5e4f0ef5d90eb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1410955134b54801158fb69c35962c0"><td class="memTemplParams" colspan="2"><a id="ad1410955134b54801158fb69c35962c0"></a>
+template&lt;typename C &gt; </td></tr>
+<tr class="memitem:ad1410955134b54801158fb69c35962c0"><td class="memTemplItemLeft" align="right" valign="top">static bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>_GetUpdate</b> (std::ostream &amp;os, const C &amp;entity)</td></tr>
+<tr class="separator:ad1410955134b54801158fb69c35962c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a4d0a16f3bb59d062063d53d37fae9d3c"><td class="memItemLeft" align="right" valign="top"><a id="a4d0a16f3bb59d062063d53d37fae9d3c"></a>
+std::shared_ptr&lt; <a class="el" href="class_b_o_t___o_r_m___impl_1_1_s_q_l_connector.html">BOT_ORM_Impl::SQLConnector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_connector</b></td></tr>
+<tr class="separator:a4d0a16f3bb59d062063d53d37fae9d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/server/<a class="el" href="ormlite_8h_source.html">ormlite.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
