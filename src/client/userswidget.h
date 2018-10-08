@@ -2,7 +2,7 @@
  * @brief 用户详情类声明文件
  * 
  * @file userswidget.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef USERSWIDGET_H

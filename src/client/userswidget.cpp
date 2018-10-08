@@ -2,7 +2,7 @@
  * @brief 用户详情类定义文件
  * 
  * @file userswidget.cpp
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #include "userswidget.h"

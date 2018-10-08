@@ -2,7 +2,7 @@
  * @brief 界面切换管理类定义文件
  * 
  * @file stackwidget.cpp
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #include "stackwidget.h"

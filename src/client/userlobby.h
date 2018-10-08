@@ -2,7 +2,7 @@
  * @brief 用户主界面类声明文件
  * 
  * @file userlobby.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef USERLOBBY_H

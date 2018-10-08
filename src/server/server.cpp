@@ -2,7 +2,7 @@
  * @brief server类定义文件
  * 
  * @file server.cpp
- * @author your name
+ * @author sean10
  * @date 2018-10-05
  */
 #include "server.h"

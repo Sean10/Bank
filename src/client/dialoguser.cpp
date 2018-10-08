@@ -2,7 +2,7 @@
  * @brief 修改及创建新用户对话框类定义文件
  * 
  * @file dialoguser.cpp
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #include "dialoguser.h"

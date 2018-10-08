@@ -2,7 +2,7 @@
  * @brief 修改密码对话框类定义文件
  * 
  * @file dialogpassword.cpp
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #include "dialogpassword.h"

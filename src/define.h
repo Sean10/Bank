@@ -2,7 +2,7 @@
  * @brief 协议定义文件
  * 
  * @file define.h
- * @author your name
+ * @author sean10
  * @date 2018-10-05
  */
 #ifndef DEFINE_H

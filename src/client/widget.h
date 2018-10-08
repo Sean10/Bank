@@ -2,7 +2,7 @@
  * @brief 登陆注册界面类声明文件
  * 
  * @file widget.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef WIDGET_H
