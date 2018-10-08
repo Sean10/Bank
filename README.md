@@ -1,14 +1,19 @@
+# 银行模拟业务中心C/S
+
 # 环境依赖
 
 ## client
 * Qt 5.8
 * openSSL 1.0.2o_1
 * C++ 14 support
+* clang++
 
 ## server
 * C++ 14 support
 * openSSL 1.0.2o_1
 * sqlite3
+* linux socket
+* clang++
 
 # 特性
 * 使用C++ 14编写
@@ -17,6 +22,8 @@
 
 # 架构
 ![](img/architecture.png)
+
+主要使用Qt绘制GUI，通过socket发送序列化的json双端进行协议交互，使用sqlite存储数据，通过数据库ORM模型进行操作。
 
 # 流程图
 ## 用户流程图
@@ -138,3 +145,4 @@
 ![](img/example/orderSearch.png)
 
 根据用户名进行模糊搜索，查询订单信息
+

@@ -2,7 +2,7 @@
  * @brief 界面切换管理类声明文件
  * 
  * @file stackwidget.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef STACKWIDGET_H

@@ -2,7 +2,7 @@
  * @brief socket头文件
  * 
  * @file socket.h
- * @author your name
+ * @author sean10
  * @date 2018-10-05
  */
 #ifndef SOCKET_H

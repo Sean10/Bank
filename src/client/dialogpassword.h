@@ -2,7 +2,7 @@
  * @brief 修改密码对话框类声明文件
  * 
  * @file dialogpassword.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef DIALOGPASSWORD_H

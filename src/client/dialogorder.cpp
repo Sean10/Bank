@@ -2,7 +2,7 @@
  * @brief 订单对话框类定义文件
  * 
  * @file dialogorder.cpp
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #include "dialogorder.h"

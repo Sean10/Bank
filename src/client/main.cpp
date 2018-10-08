@@ -2,7 +2,7 @@
  * @brief 程序入口，主函数文件
  * 
  * @file main.cpp
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #include "widget.h"

@@ -2,7 +2,7 @@
  * @brief 订单对话框类声明文件
  * 
  * @file dialogorder.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef DIALOGORDER_H

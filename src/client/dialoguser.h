@@ -2,7 +2,7 @@
  * @brief 修改及创建新用户对话框类声明文件
  * 
  * @file dialoguser.h
- * @author your name
+ * @author sean10
  * @date 2018-09-27
  */
 #ifndef DIALOGUSER_H
