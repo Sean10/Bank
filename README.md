@@ -1,6 +1,14 @@
 # 银行模拟业务中心C/S
 
 # 环境依赖
+## 平台
+* Linux GUI界面下，安装Qt Creator(Qt 5)
+* 安装openSSL，根据openSSL安装版本及路径修改common.pri中openSSL库依赖路径
+* 支持c++ 14的编译器
+    * g++ version >= 5
+    * clang++ version > 3.4
+
+然后Qt编译运行即可
 
 ## client
 * Qt 5.8
@@ -14,6 +22,9 @@
 * sqlite3
 * linux socket
 * clang++
+
+
+
 
 # 特性
 * 使用C++ 14编写
